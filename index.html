@@ -9,7 +9,6 @@
     :root {
       --crimson:      #8D0000;
       --crimson-dark: #5a0000;
-      --crimson-mid:  #6e0000;
       --crimson-light:#b30000;
       --gold:         #e8b84b;
       --gold-light:   #f5d080;
@@ -18,1065 +17,181 @@
       --gray-light:   #f2f0ee;
       --gray:         #888;
       --text:         #1a1a1a;
-      --boys-color:   #8D0000;
       --central-color:#1a3a6e;
     }
-
     * { margin:0; padding:0; box-sizing:border-box; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--offwhite); color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--offwhite);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+    /* HEADER */
+    header { background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 60%, var(--crimson-light) 100%); position: sticky; top: 0; z-index: 200; box-shadow: 0 3px 20px rgba(141,0,0,0.5); }
+    .header-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .site-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-emblem { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--crimson-dark); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(255,255,255,0.2); }
+    .logo-words .main { font-size: 16px; font-weight: 900; color: var(--white); letter-spacing: 0.05em; line-height: 1.2; }
+    .logo-words .sub { font-size: 10px; color: var(--gold-light); letter-spacing: 0.12em; }
+    .header-nav ul { display: flex; gap: 4px; list-style: none; }
+    .header-nav ul li a { display: block; padding: 8px 13px; color: rgba(255,255,255,0.88); font-size: 12px; font-weight: 700; text-decoration: none; border-radius: 4px; letter-spacing: 0.05em; transition: background 0.2s; }
+    .header-nav ul li a:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+    .btn-contact-header { background: var(--gold) !important; color: var(--crimson-dark) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); transition: 0.3s; }
 
-    /* ==============================
-       HEADER
-    ============================== */
-    header {
-      background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 60%, var(--crimson-light) 100%);
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      box-shadow: 0 3px 20px rgba(141,0,0,0.5);
-    }
-
-    .header-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .site-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
-    .logo-emblem {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      color: var(--crimson-dark);
-      letter-spacing: 1px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
-    }
-
-    .logo-words .main {
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.05em;
-      line-height: 1.2;
-    }
-
-    .logo-words .sub {
-      font-size: 10px;
-      color: var(--gold-light);
-      letter-spacing: 0.12em;
-    }
-
-    .header-nav ul {
-      display: flex;
-      gap: 4px;
-      list-style: none;
-    }
-
-    .header-nav ul li a {
-      display: block;
-      padding: 8px 13px;
-      color: rgba(255,255,255,0.88);
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .header-nav ul li a:hover {
-      background: rgba(255,255,255,0.15);
-      color: var(--white);
-    }
-
-    .btn-contact-header {
-      background: var(--gold) !important;
-      color: var(--crimson-dark) !important;
-      border-radius: 4px;
-    }
-
-    .btn-contact-header:hover {
-      background: var(--gold-light) !important;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      transition: 0.3s;
-    }
-
-    /* ==============================
-       HERO
-    ============================== */
-    .hero {
-      background: linear-gradient(160deg, var(--crimson-dark) 0%, var(--crimson) 50%, #a50000 100%);
-      position: relative;
-      overflow: hidden;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-    }
-
-    /* ダイヤ型グラデーション装飾 */
-    .hero-deco-1 {
-      position: absolute;
-      right: -100px;
-      top: -100px;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,184,75,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-deco-2 {
-      position: absolute;
-      left: -60px;
-      bottom: -60px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* ストライプ背景 */
-    .hero-stripe {
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        -55deg,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 36px
-      );
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 60px;
-    }
-
+    /* HERO */
+    .hero { background: linear-gradient(160deg, var(--crimson-dark) 0%, var(--crimson) 50%, #a50000 100%); position: relative; overflow: hidden; min-height: 560px; display: flex; align-items: center; }
+    .hero-deco-1 { position: absolute; right: -100px; top: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(232,184,75,0.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-deco-2 { position: absolute; left: -60px; bottom: -60px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); pointer-events: none; }
+    .hero-stripe { position: absolute; inset: 0; background-image: repeating-linear-gradient(-55deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 36px); pointer-events: none; }
+    .hero-inner { max-width: 1140px; margin: 0 auto; padding: 80px 24px; position: relative; z-index: 2; display: flex; align-items: center; gap: 60px; }
     .hero-text { flex: 1; }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(232,184,75,0.2);
-      border: 1px solid rgba(232,184,75,0.5);
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      padding: 5px 14px;
-      border-radius: 2px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1.15;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-    }
-
-    .hero-title .line1 {
-      font-size: clamp(14px, 2vw, 18px);
-      color: rgba(255,255,255,0.7);
-      display: block;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      margin-bottom: 4px;
-    }
-
-    .hero-title .line2 {
-      font-size: clamp(40px, 7vw, 68px);
-      display: block;
-      line-height: 1;
-    }
-
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,184,75,0.2); border: 1px solid rgba(232,184,75,0.5); color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; padding: 5px 14px; border-radius: 2px; margin-bottom: 20px; }
+    .hero-title { font-weight: 900; color: var(--white); line-height: 1.15; letter-spacing: 0.06em; margin-bottom: 10px; }
+    .hero-title .line1 { font-size: clamp(14px, 2vw, 18px); color: rgba(255,255,255,0.7); display: block; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 4px; }
+    .hero-title .line2 { font-size: clamp(40px, 7vw, 68px); display: block; line-height: 1; }
     .hero-title .gold { color: var(--gold); }
+    .hero-sub { font-size: clamp(13px, 2vw, 16px); color: rgba(255,255,255,0.72); line-height: 1.9; margin-bottom: 36px; max-width: 460px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 13px 26px; border-radius: 4px; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+    .btn-gold { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--crimson-dark); box-shadow: 0 4px 18px rgba(232,184,75,0.4); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,0.5); }
+    .btn-outline-white { border: 2px solid rgba(255,255,255,0.45); color: var(--white); }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+    .hero-card-area { flex: 0 0 300px; display: flex; flex-direction: column; gap: 14px; }
+    .team-card-hero { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-radius: 10px; padding: 20px 22px; text-decoration: none; transition: background 0.25s, transform 0.25s; display: block; }
+    .team-card-hero:hover { background: rgba(255,255,255,0.18); transform: translateX(4px); }
+    .team-card-hero .tc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
+    .team-card-hero .tc-name { font-size: 20px; font-weight: 900; color: var(--white); letter-spacing: 0.05em; margin-bottom: 6px; }
+    .team-card-hero .tc-desc { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .tc-arrow { float: right; color: var(--gold); font-size: 18px; margin-top: -24px; }
 
-    .hero-sub {
-      font-size: clamp(13px, 2vw, 16px);
-      color: rgba(255,255,255,0.72);
-      line-height: 1.9;
-      margin-bottom: 36px;
-      max-width: 460px;
-    }
+    /* TICKER */
+    .ticker-bar { background: var(--gold); padding: 10px 0; }
+    .ticker-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 16px; }
+    .ticker-tag { background: var(--crimson); color: var(--white); font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 2px; white-space: nowrap; letter-spacing: 0.1em; flex-shrink: 0; }
+    .ticker-text { font-size: 13px; font-weight: 700; color: var(--crimson-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 26px;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--crimson-dark);
-      box-shadow: 0 4px 18px rgba(232,184,75,0.4);
-    }
-
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232,184,75,0.5);
-    }
-
-    .btn-outline-white {
-      border: 2px solid rgba(255,255,255,0.45);
-      color: var(--white);
-    }
-
-    .btn-outline-white:hover {
-      border-color: var(--white);
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* ヒーロー右側カード */
-    .hero-card-area {
-      flex: 0 0 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .team-card-hero {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(8px);
-      border-radius: 10px;
-      padding: 20px 22px;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.25s;
-      display: block;
-    }
-
-    .team-card-hero:hover {
-      background: rgba(255,255,255,0.18);
-      transform: translateX(4px);
-    }
-
-    .team-card-hero .tc-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-
-    .team-card-hero .tc-name {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .team-card-hero .tc-desc {
-      font-size: 12px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.6;
-    }
-
-    .tc-arrow {
-      float: right;
-      color: var(--gold);
-      font-size: 18px;
-      margin-top: -24px;
-    }
-
-    /* ==============================
-       お知らせ帯
-    ============================== */
-    .ticker-bar {
-      background: var(--gold);
-      padding: 10px 0;
-    }
-
-    .ticker-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .ticker-tag {
-      background: var(--crimson);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 2px;
-      white-space: nowrap;
-      letter-spacing: 0.1em;
-      flex-shrink: 0;
-    }
-
-    .ticker-text {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--crimson-dark);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ==============================
-       セクション共通
-    ============================== */
+    /* SECTION COMMON */
     section { padding: 72px 24px; }
-
     .section-inner { max-width: 1140px; margin: 0 auto; }
+    .sec-head { display: flex; align-items: flex-end; gap: 14px; padding-bottom: 16px; border-bottom: 3px solid var(--crimson); margin-bottom: 40px; }
+    .sec-en { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--crimson); letter-spacing: 0.05em; line-height: 1; }
+    .sec-ja { font-size: 13px; font-weight: 700; color: var(--gray); letter-spacing: 0.1em; padding-bottom: 4px; }
 
-    .sec-head {
-      display: flex;
-      align-items: flex-end;
-      gap: 14px;
-      padding-bottom: 16px;
-      border-bottom: 3px solid var(--crimson);
-      margin-bottom: 40px;
-    }
-
-    .sec-en {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 44px;
-      color: var(--crimson);
-      letter-spacing: 0.05em;
-      line-height: 1;
-    }
-
-    .sec-ja {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gray);
-      letter-spacing: 0.1em;
-      padding-bottom: 4px;
-    }
-
-    /* ==============================
-       2チーム選択セクション
-    ============================== */
-    .teams-section {
-      background: var(--white);
-    }
-
-    .teams-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .team-big-card {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-      transition: transform 0.25s, box-shadow 0.25s;
-      text-decoration: none;
-      display: block;
-    }
-
-    .team-big-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    }
-
-    .tbc-top {
-      padding: 36px 32px 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tbc-top::before {
-      content: '⚾';
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      font-size: 64px;
-      opacity: 0.15;
-    }
-
-    .boys-card .tbc-top {
-      background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%);
-    }
-
-    .central-card .tbc-top {
-      background: linear-gradient(135deg, #0f2650 0%, var(--central-color) 100%);
-    }
-
-    .tbc-tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      border: 1px solid rgba(232,184,75,0.4);
-      padding: 3px 10px;
-      border-radius: 2px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .tbc-name {
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.05em;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .tbc-tagline {
-      font-size: 13px;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.7;
-    }
-
-    .tbc-bottom {
-      background: var(--white);
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .tbc-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .tbc-link {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--gray);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-
+    /* TEAMS */
+    .teams-section { background: var(--white); }
+    .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .team-big-card { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.1); transition: transform 0.25s, box-shadow 0.25s; text-decoration: none; display: block; }
+    .team-big-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+    .tbc-top { padding: 36px 32px 28px; position: relative; overflow: hidden; }
+    .tbc-top::before { content: '⚾'; position: absolute; right: 20px; top: 20px; font-size: 64px; opacity: 0.15; }
+    .boys-card .tbc-top { background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%); }
+    .central-card .tbc-top { background: linear-gradient(135deg, #0f2650 0%, var(--central-color) 100%); }
+    .tbc-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); border: 1px solid rgba(232,184,75,0.4); padding: 3px 10px; border-radius: 2px; margin-bottom: 12px; text-transform: uppercase; }
+    .tbc-name { font-size: 28px; font-weight: 900; color: var(--white); letter-spacing: 0.05em; line-height: 1.2; margin-bottom: 12px; }
+    .tbc-tagline { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.7; }
+    .tbc-bottom { background: var(--white); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .tbc-links { display: flex; gap: 20px; }
+    .tbc-link { font-size: 12px; font-weight: 700; color: var(--gray); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
     .boys-card .tbc-link:hover { color: var(--crimson); }
     .central-card .tbc-link:hover { color: var(--central-color); }
-
-    .tbc-cta {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 8px 18px;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .boys-card .tbc-cta {
-      background: var(--crimson);
-      color: var(--white);
-    }
-
+    .tbc-cta { font-size: 12px; font-weight: 700; padding: 8px 18px; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .boys-card .tbc-cta { background: var(--crimson); color: var(--white); }
     .boys-card .tbc-cta:hover { background: var(--crimson-dark); }
-
-    .central-card .tbc-cta {
-      background: var(--central-color);
-      color: var(--white);
-    }
-
+    .central-card .tbc-cta { background: var(--central-color); color: var(--white); }
     .central-card .tbc-cta:hover { background: #0f2650; }
 
-    /* ==============================
-       ニュース（父母更新エリア）
-    ============================== */
-    .news-section {
-      background: var(--gray-light);
-    }
-
-    .news-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-
-    .news-tab {
-      padding: 8px 20px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-      background: var(--white);
-      color: var(--gray);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .news-tab.active {
-      background: var(--crimson);
-      color: var(--white);
-    }
-
-    .news-tab:hover:not(.active) {
-      background: #eee;
-    }
-
-    /* 父母更新バッジ */
-    .parent-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #fff3cd;
-      border: 1px solid #ffc107;
-      color: #856404;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-left: auto;
-      letter-spacing: 0.05em;
-    }
-
-    .news-list {
-      list-style: none;
-      background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-
-    .news-list li {
-      border-bottom: 1px solid #f0eeec;
-    }
-
+    /* NEWS */
+    .news-section { background: var(--gray-light); }
+    .news-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .news-tab { padding: 8px 20px; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; border: none; transition: all 0.2s; background: var(--white); color: var(--gray); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .news-tab.active { background: var(--crimson); color: var(--white); }
+    .news-tab:hover:not(.active) { background: #eee; }
+    .parent-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff3cd; border: 1px solid #ffc107; color: #856404; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-left: auto; letter-spacing: 0.05em; }
+    .news-list { list-style: none; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .news-list li { border-bottom: 1px solid #f0eeec; }
     .news-list li:last-child { border-bottom: none; }
-
-    .news-list li a {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 14px;
-      transition: background 0.15s;
-    }
-
+    .news-list li a { display: flex; align-items: center; gap: 14px; padding: 16px 20px; text-decoration: none; color: var(--text); font-size: 14px; transition: background 0.15s; }
     .news-list li a:hover { background: #fdf5f5; }
-
-    .news-date {
-      font-size: 11px;
-      color: var(--gray);
-      white-space: nowrap;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .news-tag {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 2px;
-      white-space: nowrap;
-      letter-spacing: 0.05em;
-      flex-shrink: 0;
-    }
-
+    .news-date { font-size: 11px; color: var(--gray); white-space: nowrap; font-weight: 700; flex-shrink: 0; }
+    .news-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 2px; white-space: nowrap; letter-spacing: 0.05em; flex-shrink: 0; }
     .tag-boys    { background: var(--crimson); color: #fff; }
     .tag-central { background: var(--central-color); color: #fff; }
     .tag-npo     { background: #555; color: #fff; }
     .tag-result  { background: #2e7d32; color: #fff; }
     .tag-event   { background: #e65100; color: #fff; }
+    .sheet-demo-note { background: #fffbea; border: 1px dashed #f0c040; border-radius: 6px; padding: 10px 16px; margin-top: 16px; font-size: 12px; color: #7a6000; display: flex; align-items: center; gap: 8px; }
 
-    .news-team-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+    /* ROLES */
+    .roles-section { background: var(--white); }
+    .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .role-card { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+    .role-header { padding: 20px 24px; display: flex; align-items: center; gap: 12px; }
+    .role-header.staff { background: linear-gradient(135deg, var(--crimson-dark), var(--crimson)); }
+    .role-header.parent { background: linear-gradient(135deg, #1a6e3a, #2e9e56); }
+    .role-icon { font-size: 28px; }
+    .role-title-wrap .role-title { font-size: 16px; font-weight: 900; color: var(--white); letter-spacing: 0.05em; }
+    .role-title-wrap .role-sub { font-size: 11px; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; }
+    .role-body { background: var(--white); padding: 20px 24px; }
+    .role-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .role-items li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #333; line-height: 1.5; }
+    .role-items li .ri-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crimson); margin-top: 6px; flex-shrink: 0; }
+    .role-note { margin-top: 16px; padding: 12px 14px; background: #fdf5f5; border-left: 3px solid var(--crimson); border-radius: 4px; font-size: 12px; color: #555; line-height: 1.6; }
+    .role-note.green { background: #f0faf4; border-color: #2e9e56; }
 
-    .dot-boys    { background: var(--crimson); }
-    .dot-central { background: var(--central-color); }
+    /* NPO */
+    .npo-section { background: linear-gradient(160deg, var(--crimson-dark) 0%, var(--crimson) 100%); position: relative; overflow: hidden; padding: 72px 24px; }
+    .npo-section::before { content: 'K CLUB'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 140px; color: rgba(255,255,255,0.05); letter-spacing: 0.1em; pointer-events: none; }
+    .npo-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    .npo-text .npo-label { display: inline-block; border: 1px solid rgba(232,184,75,0.5); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; padding: 4px 12px; border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; }
+    .npo-text h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--white); letter-spacing: 0.06em; line-height: 1.4; margin-bottom: 16px; }
+    .npo-text p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.9; }
+    .npo-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-box { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 20px; text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--gold); letter-spacing: 0.05em; line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; }
 
-    /* ==============================
-       役割分担説明
-    ============================== */
-    .roles-section {
-      background: var(--white);
-    }
+    /* RECRUIT */
+    .recruit-banner { background: var(--gold); padding: 40px 24px; text-align: center; }
+    .recruit-banner h2 { font-size: clamp(20px, 4vw, 32px); font-weight: 900; color: var(--crimson-dark); letter-spacing: 0.06em; margin-bottom: 10px; }
+    .recruit-banner p { font-size: 14px; color: rgba(90,0,0,0.75); margin-bottom: 24px; line-height: 1.7; }
+    .recruit-banner .btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-crimson { background: var(--crimson); color: var(--white); box-shadow: 0 4px 16px rgba(141,0,0,0.35); }
+    .btn-crimson:hover { background: var(--crimson-dark); transform: translateY(-2px); }
+    .btn-outline-crimson { border: 2px solid var(--crimson); color: var(--crimson-dark); font-weight: 700; }
+    .btn-outline-crimson:hover { background: var(--crimson); color: var(--white); }
 
-    .roles-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .role-card {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-    }
-
-    .role-header {
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .role-header.staff {
-      background: linear-gradient(135deg, var(--crimson-dark), var(--crimson));
-    }
-
-    .role-header.parent {
-      background: linear-gradient(135deg, #1a6e3a, #2e9e56);
-    }
-
-    .role-icon {
-      font-size: 28px;
-    }
-
-    .role-title-wrap .role-title {
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.05em;
-    }
-
-    .role-title-wrap .role-sub {
-      font-size: 11px;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.1em;
-    }
-
-    .role-body {
-      background: var(--white);
-      padding: 20px 24px;
-    }
-
-    .role-items {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .role-items li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    .role-items li .ri-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--crimson);
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-
-    .role-header.parent + .role-body .role-items li .ri-dot {
-      background: #2e9e56;
-    }
-
-    .role-note {
-      margin-top: 16px;
-      padding: 12px 14px;
-      background: #fdf5f5;
-      border-left: 3px solid var(--crimson);
-      border-radius: 4px;
-      font-size: 12px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .role-note.green {
-      background: #f0faf4;
-      border-color: #2e9e56;
-    }
-
-    /* ==============================
-       NPO法人紹介
-    ============================== */
-    .npo-section {
-      background: linear-gradient(160deg, var(--crimson-dark) 0%, var(--crimson) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .npo-section::before {
-      content: 'K CLUB';
-      position: absolute;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 140px;
-      color: rgba(255,255,255,0.05);
-      letter-spacing: 0.1em;
-      pointer-events: none;
-    }
-
-    .npo-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .npo-text .npo-label {
-      display: inline-block;
-      border: 1px solid rgba(232,184,75,0.5);
-      color: var(--gold);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      padding: 4px 12px;
-      border-radius: 2px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-
-    .npo-text h2 {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.06em;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .npo-text p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.9;
-    }
-
-    .npo-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .stat-box {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 42px;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.08em;
-    }
-
-    /* ==============================
-       入団募集バナー
-    ============================== */
-    .recruit-banner {
-      background: var(--gold);
-      padding: 40px 24px;
-      text-align: center;
-    }
-
-    .recruit-banner h2 {
-      font-size: clamp(20px, 4vw, 32px);
-      font-weight: 900;
-      color: var(--crimson-dark);
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-    }
-
-    .recruit-banner p {
-      font-size: 14px;
-      color: rgba(90,0,0,0.75);
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
-
-    .recruit-banner .btns {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn-crimson {
-      background: var(--crimson);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(141,0,0,0.35);
-    }
-
-    .btn-crimson:hover {
-      background: var(--crimson-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-crimson {
-      border: 2px solid var(--crimson);
-      color: var(--crimson-dark);
-      font-weight: 700;
-    }
-
-    .btn-outline-crimson:hover {
-      background: var(--crimson);
-      color: var(--white);
-    }
-
-    /* ==============================
-       フッター
-    ============================== */
-    footer {
-      background: #1a0000;
-      color: rgba(255,255,255,0.55);
-      padding: 48px 24px 24px;
-    }
-
+    /* FOOTER */
+    footer { background: #1a0000; color: rgba(255,255,255,0.55); padding: 48px 24px 24px; }
     .footer-inner { max-width: 1140px; margin: 0 auto; }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 36px;
-    }
-
-    .footer-logo .main {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .footer-logo .sub {
-      font-size: 10px;
-      color: var(--gold);
-      letter-spacing: 0.12em;
-    }
-
-    .footer-teams {
-      display: flex;
-      gap: 40px;
-    }
-
-    .footer-team-col h4 {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .footer-team-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .footer-team-col ul li a {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .footer-top { display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: start; margin-bottom: 36px; }
+    .footer-logo .main { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+    .footer-logo .sub { font-size: 10px; color: var(--gold); letter-spacing: 0.12em; }
+    .footer-teams { display: flex; gap: 40px; }
+    .footer-team-col h4 { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 12px; text-transform: uppercase; }
+    .footer-team-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-team-col ul li a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
     .footer-team-col ul li a:hover { color: var(--white); }
-
-    .footer-contact {
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .footer-contact a {
-      color: var(--gold);
-      text-decoration: none;
-    }
+    .footer-contact { font-size: 13px; line-height: 1.8; }
+    .footer-contact a { color: var(--gold); text-decoration: none; }
 
     /* SNSアイコン */
-    .footer-sns {
-      margin-top: 20px;
-    }
+    .footer-sns { margin-top: 20px; }
+    .footer-sns-label { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
+    .sns-icons { display: flex; gap: 10px; flex-wrap: wrap; }
+    .sns-icon { display: flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; transition: all 0.2s; }
+    .sns-icon svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .sns-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: var(--white); }
+    .sns-instagram:hover { opacity: 0.85; transform: translateY(-2px); }
+    .sns-facebook { background: #1877f2; color: var(--white); }
+    .sns-facebook:hover { background: #0f5bbf; transform: translateY(-2px); }
 
-    .footer-sns-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; flex-wrap: wrap; gap: 8px; }
 
-    .sns-icons {
-      display: flex;
-      gap: 10px;
-    }
+    /* FADE IN */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .sns-icon {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transition: all 0.2s;
-      border: 1px solid transparent;
-    }
-
-    .sns-icon svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    .sns-instagram {
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      color: var(--white);
-    }
-
-    .sns-instagram:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
-    }
-
-    .sns-facebook {
-      background: #1877f2;
-      color: var(--white);
-    }
-
-    .sns-facebook:hover {
-      background: #0f5bbf;
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    /* ==============================
-       スプシ連携表示デモ
-    ============================== */
-    .sheet-demo-note {
-      background: #fffbea;
-      border: 1px dashed #f0c040;
-      border-radius: 6px;
-      padding: 10px 16px;
-      margin-top: 16px;
-      font-size: 12px;
-      color: #7a6000;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* ==============================
-       フェードイン
-    ============================== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==============================
-       レスポンシブ
-    ============================== */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-inner { flex-direction: column; gap: 36px; }
       .hero-card-area { flex: none; width: 100%; }
@@ -1086,31 +201,20 @@
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .footer-teams { flex-direction: column; gap: 24px; }
     }
-
     @media (max-width: 768px) {
       .hamburger { display: flex; }
-      .header-nav {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        background: var(--crimson-dark);
-        padding: 16px 20px;
-        z-index: 300;
-      }
+      .header-nav { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--crimson-dark); padding: 16px 20px; z-index: 300; }
       .header-nav.open { display: block; }
       .header-nav ul { flex-direction: column; gap: 4px; }
       .header-nav ul li a { padding: 12px 16px; font-size: 15px; }
-      .npo-stats { grid-template-columns: 1fr 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
       section { padding: 52px 20px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <a href="#" class="site-logo">
@@ -1136,7 +240,7 @@
   </div>
 </header>
 
-<!-- ========== HERO ========== -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-stripe"></div>
   <div class="hero-deco-1"></div>
@@ -1148,11 +252,7 @@
         <span class="line1">NPO法人</span>
         <span class="line2">越谷<span class="gold">K</span>・クラブ</span>
       </h1>
-      <p class="hero-sub">
-        越谷市を拠点に、地域の子どもたちが<br>
-        野球を通じて成長できる環境をつくっています。<br>
-        礼儀・仲間・努力。その先に未来がある。
-      </p>
+      <p class="hero-sub">越谷市を拠点に、地域の子どもたちが<br>野球を通じて成長できる環境をつくっています。<br>礼儀・仲間・努力。その先に未来がある。</p>
       <div class="hero-btns">
         <a href="#" class="btn btn-gold">⚾ 入団のご相談はこちら</a>
         <a href="#" class="btn btn-outline-white">法人について</a>
@@ -1175,34 +275,26 @@
   </div>
 </section>
 
-<!-- ========== お知らせ帯 ========== -->
+<!-- TICKER -->
 <div class="ticker-bar">
   <div class="ticker-inner">
     <span class="ticker-tag">最新情報</span>
-    <span class="ticker-text">【越谷ボーイズ】令和7年秋季埼玉県東支部大会 結果を掲載 ／ 2025年度 新入団選手を随時募集中です</span>
+    <span class="ticker-text">【越谷ボーイズ】令和7年秋季埼玉県東支部大会 結果を掲載 ／ 2025年度 新入団選手を随時募集中</span>
   </div>
 </div>
 
-<!-- ========== 2チーム選択 ========== -->
+<!-- TEAMS -->
 <section class="teams-section">
   <div class="section-inner">
     <div class="sec-head">
-      <div>
-        <div class="sec-en">TEAMS</div>
-        <div class="sec-ja">所属チームを選ぶ</div>
-      </div>
+      <div><div class="sec-en">TEAMS</div><div class="sec-ja">所属チームを選ぶ</div></div>
     </div>
-
     <div class="teams-grid">
-      <!-- 越谷ボーイズ -->
       <a href="#" class="team-big-card boys-card fade-up">
         <div class="tbc-top">
           <div class="tbc-tag">Team A</div>
           <div class="tbc-name">越谷ボーイズ</div>
-          <div class="tbc-tagline">
-            埼玉県越谷市を拠点とする少年野球チーム。<br>
-            試合結果・スケジュール・活動報告はこちら。
-          </div>
+          <div class="tbc-tagline">埼玉県越谷市を拠点とする少年野球チーム。<br>試合結果・スケジュール・活動報告はこちら。</div>
         </div>
         <div class="tbc-bottom">
           <div class="tbc-links">
@@ -1213,16 +305,11 @@
           <span class="tbc-cta">詳しく見る</span>
         </div>
       </a>
-
-      <!-- 越谷中央ボーイズ -->
       <a href="#" class="team-big-card central-card fade-up">
         <div class="tbc-top">
           <div class="tbc-tag">Team B</div>
           <div class="tbc-name">越谷中央ボーイズ</div>
-          <div class="tbc-tagline">
-            越谷市中央エリアを拠点とする少年野球チーム。<br>
-            試合結果・スケジュール・活動報告はこちら。
-          </div>
+          <div class="tbc-tagline">越谷市中央エリアを拠点とする少年野球チーム。<br>試合結果・スケジュール・活動報告はこちら。</div>
         </div>
         <div class="tbc-bottom">
           <div class="tbc-links">
@@ -1237,84 +324,37 @@
   </div>
 </section>
 
-<!-- ========== ニュース ========== -->
+<!-- NEWS -->
 <section class="news-section">
   <div class="section-inner">
     <div class="sec-head">
-      <div>
-        <div class="sec-en">NEWS</div>
-        <div class="sec-ja">お知らせ・試合結果</div>
-      </div>
+      <div><div class="sec-en">NEWS</div><div class="sec-ja">お知らせ・試合結果</div></div>
       <span class="parent-badge">📋 父母がスプレッドシートで更新</span>
     </div>
-
     <div class="news-tabs">
       <button class="news-tab active">すべて</button>
       <button class="news-tab">越谷ボーイズ</button>
       <button class="news-tab">越谷中央ボーイズ</button>
       <button class="news-tab">NPO法人</button>
     </div>
-
     <ul class="news-list">
-      <li class="fade-up">
-        <a href="#">
-          <span class="news-date">2025.09.17</span>
-          <span class="news-tag tag-boys">ボーイズ</span>
-          <span class="news-tag tag-result">試合結果</span>
-          <span>令和7年秋季埼玉県東支部大会 結果を掲載しました</span>
-        </a>
-      </li>
-      <li class="fade-up">
-        <a href="#">
-          <span class="news-date">2025.09.10</span>
-          <span class="news-tag tag-central">中央ボーイズ</span>
-          <span class="news-tag tag-result">試合結果</span>
-          <span>秋季東部支部予選 第1回戦 勝利しました</span>
-        </a>
-      </li>
-      <li class="fade-up">
-        <a href="#">
-          <span class="news-date">2025.08.25</span>
-          <span class="news-tag tag-npo">NPO法人</span>
-          <span>2025年度 役員会議の結果をお知らせします</span>
-        </a>
-      </li>
-      <li class="fade-up">
-        <a href="#">
-          <span class="news-date">2025.08.01</span>
-          <span class="news-tag tag-boys">ボーイズ</span>
-          <span class="news-tag tag-event">イベント</span>
-          <span>夏合宿を実施しました。写真ギャラリーを公開しています</span>
-        </a>
-      </li>
-      <li class="fade-up">
-        <a href="#">
-          <span class="news-date">2025.07.20</span>
-          <span class="news-tag tag-central">中央ボーイズ</span>
-          <span class="news-tag tag-event">イベント</span>
-          <span>夏季強化練習を実施しました</span>
-        </a>
-      </li>
+      <li class="fade-up"><a href="#"><span class="news-date">2025.09.17</span><span class="news-tag tag-boys">ボーイズ</span><span class="news-tag tag-result">試合結果</span><span>令和7年秋季埼玉県東支部大会 結果を掲載しました</span></a></li>
+      <li class="fade-up"><a href="#"><span class="news-date">2025.09.10</span><span class="news-tag tag-central">中央ボーイズ</span><span class="news-tag tag-result">試合結果</span><span>秋季東部支部予選 第1回戦 勝利しました</span></a></li>
+      <li class="fade-up"><a href="#"><span class="news-date">2025.08.25</span><span class="news-tag tag-npo">NPO法人</span><span>2025年度 役員会議の結果をお知らせします</span></a></li>
+      <li class="fade-up"><a href="#"><span class="news-date">2025.08.01</span><span class="news-tag tag-boys">ボーイズ</span><span class="news-tag tag-event">イベント</span><span>夏合宿を実施しました。写真ギャラリーを公開しています</span></a></li>
+      <li class="fade-up"><a href="#"><span class="news-date">2025.07.20</span><span class="news-tag tag-central">中央ボーイズ</span><span class="news-tag tag-event">イベント</span><span>夏季強化練習を実施しました</span></a></li>
     </ul>
-
-    <div class="sheet-demo-note">
-      💡 このニュース一覧はGoogleスプレッドシートと連携しています。父母の方がシートに記入するだけで自動更新されます。
-    </div>
+    <div class="sheet-demo-note">💡 このニュース一覧はGoogleスプレッドシートと連携しています。父母の方がシートに記入するだけで自動更新されます。</div>
   </div>
 </section>
 
-<!-- ========== 役割分担説明 ========== -->
+<!-- ROLES -->
 <section class="roles-section">
   <div class="section-inner">
     <div class="sec-head">
-      <div>
-        <div class="sec-en">ROLES</div>
-        <div class="sec-ja">サイト運営の役割分担</div>
-      </div>
+      <div><div class="sec-en">ROLES</div><div class="sec-ja">サイト運営の役割分担</div></div>
     </div>
-
     <div class="roles-grid">
-      <!-- 運営者 -->
       <div class="role-card fade-up">
         <div class="role-header staff">
           <span class="role-icon">🏢</span>
@@ -1329,15 +369,11 @@
             <li><span class="ri-dot"></span>チーム紹介・指導方針</li>
             <li><span class="ri-dot"></span>スタッフ・コーチ紹介</li>
             <li><span class="ri-dot"></span>入団案内・費用説明</li>
-            <li><span class="ri-dot"></span>アクセス・お問い合わせ</li>
+            <li><span class="ri-dot"></span>アクセス情報</li>
           </ul>
-          <div class="role-note">
-            年に数回程度の更新。HTMLファイルをGitHubにアップロードするだけでOK。
-          </div>
+          <div class="role-note">年に数回程度の更新。HTMLファイルをGitHubにアップするだけでOK。</div>
         </div>
       </div>
-
-      <!-- 父母 -->
       <div class="role-card fade-up">
         <div class="role-header parent">
           <span class="role-icon">👨‍👩‍👧</span>
@@ -1354,61 +390,41 @@
             <li><span class="ri-dot"></span>イベントのお知らせ</li>
             <li><span class="ri-dot"></span>当番・連絡事項</li>
           </ul>
-          <div class="role-note green">
-            Googleスプレッドシートに入力するだけでサイトに反映。HTMLの知識不要。スマホからでも更新できます。
-          </div>
+          <div class="role-note green">Googleスプレッドシートに入力するだけでサイトに反映。HTMLの知識不要。スマホからでも更新できます。</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== NPO法人紹介 ========== -->
+<!-- NPO -->
 <section class="npo-section">
   <div class="npo-inner">
     <div class="npo-text fade-up">
       <div class="npo-label">About NPO</div>
       <h2>地域の子どもたちに<br>野球の喜びを届けたい</h2>
-      <p>
-        NPO法人 越谷K・クラブは、埼玉県越谷市を拠点に少年野球を通じた青少年育成を行う非営利組織です。<br><br>
-        技術の向上はもちろん、礼儀・協調性・忍耐力など、野球を通じて人として成長できる環境づくりを大切にしています。
-      </p>
+      <p>NPO法人 越谷K・クラブは、埼玉県越谷市を拠点に少年野球を通じた青少年育成を行う非営利組織です。<br><br>技術の向上はもちろん、礼儀・協調性・忍耐力など、野球を通じて人として成長できる環境づくりを大切にしています。</p>
     </div>
     <div class="npo-stats fade-up">
-      <div class="stat-box">
-        <div class="stat-num">2</div>
-        <div class="stat-label">所属チーム数</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">30+</div>
-        <div class="stat-label">年以上の活動歴</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">0</div>
-        <div class="stat-label">体験参加費用</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">随時</div>
-        <div class="stat-label">入団受付中</div>
-      </div>
+      <div class="stat-box"><div class="stat-num">2</div><div class="stat-label">所属チーム数</div></div>
+      <div class="stat-box"><div class="stat-num">30+</div><div class="stat-label">年以上の活動歴</div></div>
+      <div class="stat-box"><div class="stat-num">0円</div><div class="stat-label">体験参加費用</div></div>
+      <div class="stat-box"><div class="stat-num">随時</div><div class="stat-label">入団受付中</div></div>
     </div>
   </div>
 </section>
 
-<!-- ========== 入団募集バナー ========== -->
+<!-- RECRUIT -->
 <div class="recruit-banner">
   <h2>⚾ 一緒に野球をしよう！</h2>
-  <p>
-    越谷ボーイズ・越谷中央ボーイズ、両チームとも新入団選手を随時募集しています。<br>
-    体験練習は無料。初心者・未経験者も大歓迎です！
-  </p>
+  <p>越谷ボーイズ・越谷中央ボーイズ、両チームとも新入団選手を随時募集しています。<br>体験練習は無料。初心者・未経験者も大歓迎です！</p>
   <div class="btns">
     <a href="#" class="btn btn-crimson">越谷ボーイズに入団相談</a>
     <a href="#" class="btn btn-outline-crimson">越谷中央ボーイズに入団相談</a>
   </div>
 </div>
 
-<!-- ========== FOOTER ========== -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -1419,18 +435,12 @@
           <div class="footer-sns-label">公式SNS</div>
           <div class="sns-icons">
             <a href="https://www.facebook.com/koshiga.k.club/" target="_blank" rel="noopener" class="sns-icon sns-facebook">
-              <!-- Facebook SVG -->
-              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-              </svg>
-              Facebook
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+              公式Facebook
             </a>
             <a href="#" target="_blank" rel="noopener" class="sns-icon sns-instagram">
-              <!-- Instagram SVG -->
-              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-              </svg>
-              Instagram
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              公式Instagram
             </a>
           </div>
         </div>
@@ -1466,7 +476,7 @@
       </div>
       <div class="footer-contact">
         <div style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:0.1em;margin-bottom:8px;">CONTACT</div>
-        <a href="/cdn-cgi/l/email-protection#88e3e7fbe0e1efe9f1e9a6e3a6ebe4fdeac8efe5e9e1e4a6ebe7e5"><span class="__cf_email__" data-cfemail="5e35312d3637393f273f7035703d322b3c1e39333f3732703d3133">[email&#160;protected]</span></a>
+        <a href="mailto:koshigaya.k.club@gmail.com">koshigaya.k.club@gmail.com</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1476,19 +486,25 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ハンバーガー
-  document.getElementById('hamburger').addEventListener('click', () => {
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('open');
   });
 
-  // ニュースタブ切替（デモ）
-  document.querySelectorAll('.news-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.news-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.news-tab').forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
     });
   });
 
-  // フェードイン
-  const observer = new Inter
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>
