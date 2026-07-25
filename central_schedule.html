@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>練習・試合スケジュール | 越谷中央ボーイズ</title>
+  <meta name="description" content="越谷ボーイズの練習・試合スケジュールです。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --crimson:#1a3a6e; --crimson-dark:#0f2650;
+      --gold:#e8b84b; --gold-light:#f5d080;
+      --white:#fff; --offwhite:#faf8f6; --gray-light:#f2f0ee; --gray:#888;
+      --text:#1a1a1a; --green:#06C755;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"Noto Sans JP",sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;}
+
+    header{background:linear-gradient(135deg,#0f2650,#1a3a6e);position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
+    .header-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .header-left{display:flex;align-items:center;gap:12px;}
+    .header-back{font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:4px;transition:all 0.2s;}
+    .header-back:hover{background:rgba(255,255,255,0.1);}
+    .logo-emblem{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:13px;color:var(--crimson-dark);flex-shrink:0;}
+    .logo-words .main{font-size:14px;font-weight:900;color:var(--white);}
+    .logo-words .sub{font-size:9px;color:var(--gold-light);letter-spacing:0.1em;}
+    .header-nav ul{display:flex;gap:2px;list-style:none;}
+    .header-nav ul li a{display:block;padding:7px 11px;color:rgba(255,255,255,0.88);font-size:11px;font-weight:700;text-decoration:none;border-radius:4px;transition:background 0.2s;}
+    .header-nav ul li a:hover{background:rgba(255,255,255,0.15);}
+    .header-nav ul li a.active{background:rgba(255,255,255,0.2);}
+    .btn-join{background:var(--gold)!important;color:var(--crimson-dark)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);}
+
+    /* PAGE HERO */
+    .page-hero{background:linear-gradient(135deg,#0f2650,#1a3a6e);padding:48px 24px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"SCHEDULE";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:80px;color:rgba(255,255,255,0.05);pointer-events:none;letter-spacing:0.1em;}
+    .page-hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;}
+    .page-hero-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:8px;text-transform:uppercase;}
+    .page-hero-title{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:8px;}
+    .page-hero-desc{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;}
+    .line-badge{display:inline-flex;align-items:center;gap:6px;background:#f0fff4;border:1px solid #06C755;color:#1a6e3a;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:12px;}
+
+    .main-inner{max-width:1140px;margin:0 auto;padding:48px 24px;}
+
+    /* 月切替タブ */
+    .month-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+    .month-tab{padding:8px 18px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;border:2px solid #ddd;background:var(--white);color:#555;transition:all 0.2s;}
+    .month-tab.active{background:#1a3a6e;color:var(--white);border-color:#1a3a6e;}
+    .month-tab:hover:not(.active){border-color:#1a3a6e;color:#1a3a6e;}
+
+    /* 凡例 */
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;}
+    .legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#555;font-weight:700;}
+    .legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+    .dot-game{background:#1a3a6e;}
+    .dot-practice{background:#1a3a6e;}
+    .dot-event{background:#e65100;}
+    .dot-cancel{background:#999;}
+
+    /* LINEエリア目印 */
+    .line-editable-wrap{position:relative;padding-top:32px;}
+    .line-editable-wrap::before{content:"📱 LINEで更新できるエリア";position:absolute;top:0;left:0;font-size:9px;font-weight:700;color:#06C755;background:#f0fff4;padding:3px 10px;border-radius:2px;border:1px solid #06C755;}
+
+    /* スケジュールテーブル */
+    .schedule-wrap{background:var(--white);border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.07);overflow:hidden;margin-bottom:32px;}
+    .schedule-month-header{background:#1a3a6e;padding:14px 20px;display:flex;align-items:center;gap:12px;}
+    .smh-month{font-family:"Bebas Neue",sans-serif;font-size:32px;color:var(--white);letter-spacing:0.05em;line-height:1;}
+    .smh-label{font-size:12px;font-weight:700;color:rgba(255,255,255,0.75);}
+    .schedule-table{width:100%;border-collapse:collapse;}
+    .schedule-table th{background:var(--gray-light);padding:10px 16px;font-size:11px;font-weight:700;color:#555;letter-spacing:0.08em;text-align:left;border-bottom:1px solid #e8e8e8;}
+    .schedule-table td{padding:14px 16px;font-size:13px;border-bottom:1px solid #f0eeec;color:#333;vertical-align:middle;}
+    .schedule-table tr:last-child td{border-bottom:none;}
+    .schedule-table tr:hover td{background:#fdf5f5;}
+
+    /* 日付セル */
+    .date-cell{white-space:nowrap;}
+    .date-day{font-size:20px;font-weight:900;color:#1a3a6e;line-height:1;}
+    .date-week{font-size:10px;font-weight:700;color:#999;margin-top:2px;}
+    .date-week.sat{color:#1a3a6e;}
+    .date-week.sun{color:#1a3a6e;}
+    .date-week.holi{color:#1a3a6e;}
+
+    /* 種別バッジ */
+    .s-type{display:inline-block;padding:3px 10px;border-radius:3px;font-size:10px;font-weight:700;white-space:nowrap;}
+    .s-game{background:#fde8e8;color:#1a3a6e;}
+    .s-practice{background:#e8eef8;color:#1a3a6e;}
+    .s-event{background:#fde8d8;color:#e65100;}
+    .s-cancel{background:#f0f0f0;color:#999;}
+
+    /* 内容 */
+    .content-main{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:3px;}
+    .content-sub{font-size:11px;color:#888;line-height:1.5;}
+
+    /* 場所 */
+    .place-cell{font-size:12px;color:#555;}
+
+    /* 時間 */
+    .time-cell{font-size:12px;font-weight:700;color:#333;white-space:nowrap;}
+
+    /* 注意事項 */
+    .note-box{background:#fffbea;border:1px solid var(--gold);border-radius:8px;padding:14px 18px;margin-bottom:24px;font-size:12px;color:#7a6000;line-height:1.7;}
+    .note-box .note-title{font-weight:900;margin-bottom:6px;color:#5a4000;}
+
+    /* LINE送り方の例 */
+    .line-how{background:#f0fff4;border-radius:10px;padding:20px 24px;margin-top:32px;}
+    .lh-title{font-size:11px;font-weight:700;color:#06C755;letter-spacing:0.1em;margin-bottom:12px;}
+    .lh-item{background:var(--white);border-left:3px solid #06C755;border-radius:0 6px 6px 0;padding:8px 14px;font-size:12px;color:#1a4a1a;line-height:1.6;margin-bottom:8px;}
+
+    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:32px 24px 20px;}
+    .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .footer-logo .main{font-size:14px;font-weight:900;color:var(--white);margin-bottom:2px;}
+    .footer-logo .sub{font-size:9px;color:var(--gold);}
+    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;}
+    .footer-back:hover{color:var(--white);border-color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;margin-top:20px;}
+
+    .fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      .header-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--crimson-dark);padding:14px 20px;z-index:300;}
+      .header-nav.open{display:block;}
+      .header-nav ul{flex-direction:column;gap:4px;}
+      .header-nav ul li a{padding:11px 14px;font-size:14px;}
+      .schedule-table th:nth-child(4),
+      .schedule-table td:nth-child(4){display:none;}
+      .main-inner{padding:32px 16px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../index.html" class="header-back">← K・クラブTOP</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="logo-emblem">CB</div>
+        <div class="logo-words">
+          <div class="main">越谷中央ボーイズ</div>
+          <div class="sub">Koshigaya Central Boys</div>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="header-nav" id="nav">
+      <ul>
+        <li><a href="index.html">チームTOP</a></li>
+        <li><a href="about.html">チーム紹介</a></li>
+        <li><a href="members.html">スタッフ・選手</a></li>
+        <li><a href="results.html">試合結果</a></li>
+        <li><a href="schedule.html" class="active">スケジュール</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="../contact.html" class="btn-join">入団相談</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">📅 Schedule</div>
+    <div class="page-hero-title">練習・試合スケジュール</div>
+    <div class="page-hero-desc">越谷中央ボーイズの練習・試合・イベントのスケジュールです。</div>
+    <div class="line-badge">💬 このページはLINEで送るだけで自動更新されます</div>
+  </div>
+</div>
+
+<div class="main-inner">
+
+  <!-- 月タブ -->
+  <div class="month-tabs">
+    <button class="month-tab active">10月</button>
+    <button class="month-tab">11月</button>
+    <button class="month-tab">12月</button>
+    <button class="month-tab">1月</button>
+  </div>
+
+  <!-- 凡例 -->
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot dot-game"></span>試合・大会</div>
+    <div class="legend-item"><span class="legend-dot dot-practice"></span>練習</div>
+    <div class="legend-item"><span class="legend-dot dot-event"></span>イベント</div>
+    <div class="legend-item"><span class="legend-dot dot-cancel"></span>中止・休み</div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="note-box fade-up">
+    <div class="note-title">📌 お知らせ</div>
+    スケジュールは変更になる場合があります。最新情報は広報担当からのLINE連絡をご確認ください。
+    雨天・グラウンド状況により練習・試合が中止になる場合があります。
+  </div>
+
+  <!-- 10月スケジュール LINEで更新エリア -->
+  <div class="line-editable-wrap">
+    <div class="schedule-wrap fade-up">
+      <div class="schedule-month-header">
+        <div class="smh-month">OCT</div>
+        <div class="smh-label">2025年10月のスケジュール</div>
+      </div>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="width:70px;">日付</th>
+            <th style="width:90px;">種別</th>
+            <th>内容</th>
+            <th style="width:130px;">場所</th>
+            <th style="width:100px;">時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">5</div><div class="date-week sun">日曜日</div></td>
+            <td><span class="s-type s-game">試合</span></td>
+            <td><div class="content-main">秋季東部支部大会 第2回戦</div><div class="content-sub">対戦相手は追ってお知らせします</div></td>
+            <td class="place-cell">越谷市民球場</td>
+            <td class="time-cell">9:00〜</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">12</div><div class="date-week sun">日曜日</div></td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td><div class="content-main">通常練習</div><div class="content-sub">打撃・守備練習</div></td>
+            <td class="place-cell">越谷市グラウンド</td>
+            <td class="time-cell">9:00〜12:00</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">13</div><div class="date-week sat">土曜日</div></td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td><div class="content-main">特別練習（投手・捕手）</div><div class="content-sub">バッテリー中心の練習</div></td>
+            <td class="place-cell">越谷市グラウンド</td>
+            <td class="time-cell">14:00〜17:00</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">19</div><div class="date-week sun">日曜日</div></td>
+            <td><span class="s-type s-game">試合</span></td>
+            <td><div class="content-main">招待試合 vs 吉川ジュニア</div><div class="content-sub">練習試合・全員参加</div></td>
+            <td class="place-cell">吉川市野球場</td>
+            <td class="time-cell">10:00〜</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">26</div><div class="date-week sun">日曜日</div></td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td><div class="content-main">通常練習・打撃強化</div><div class="content-sub">ティーバッティング・フリー打撃</div></td>
+            <td class="place-cell">越谷市グラウンド</td>
+            <td class="time-cell">9:00〜12:00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="schedule-wrap fade-up">
+      <div class="schedule-month-header" style="background:#1a3a6e;">
+        <div class="smh-month">NOV</div>
+        <div class="smh-label">2025年11月のスケジュール</div>
+      </div>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="width:70px;">日付</th>
+            <th style="width:90px;">種別</th>
+            <th>内容</th>
+            <th style="width:130px;">場所</th>
+            <th style="width:100px;">時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">3</div><div class="date-week holi">月（祝）</div></td>
+            <td><span class="s-type s-event">イベント</span></td>
+            <td><div class="content-main">秋季大会 表彰式・保護者会</div><div class="content-sub">会場は追ってお知らせします</div></td>
+            <td class="place-cell">越谷市民会館</td>
+            <td class="time-cell">13:00〜</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">9</div><div class="date-week sun">日曜日</div></td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td><div class="content-main">通常練習</div><div class="content-sub">冬季トレーニング開始</div></td>
+            <td class="place-cell">越谷市グラウンド</td>
+            <td class="time-cell">9:00〜12:00</td>
+          </tr>
+          <tr class="fade-up">
+            <td class="date-cell"><div class="date-day">23</div><div class="date-week holi">日（祝）</div></td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td><div class="content-main">合同練習</div><div class="content-sub">越谷ボーイズとの合同練習</div></td>
+            <td class="place-cell">越谷市グラウンド</td>
+            <td class="time-cell">9:00〜12:00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LINEの送り方 -->
+  <div class="line-how fade-up">
+    <div class="lh-title">💬 スケジュールの追加・変更はこう送ってください</div>
+    <div class="lh-item">「スケジュール追加：10月5日（日）9時〜 越谷市民球場 秋季大会第2回戦」</div>
+    <div class="lh-item">「スケジュール変更：10月12日の練習は雨天中止になりました」</div>
+    <div class="lh-item">「スケジュール削除：11月3日のイベントを削除してください」</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="main">越谷中央ボーイズ スケジュール</div>
+      <div class="sub">NPO法人 越谷K・クラブ</div>
+    </div>
+    <a href="index.html" class="footer-back">← チームTOPへ戻る</a>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("hamburger").addEventListener("click",function(){
+  document.getElementById("nav").classList.toggle("open");
+});
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});
+},{threshold:0.1});
+document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
