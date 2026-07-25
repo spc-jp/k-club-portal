@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入団案内 | NPO法人 越谷K・クラブ</title>
+  <meta name="description" content="越谷K・クラブの入団案内です。越谷ボーイズ・越谷中央ボーイズとも随時入団募集中。体験練習は無料です。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --crimson:#8D0000; --crimson-dark:#5a0000;
+      --navy:#1a3a6e; --navy-dark:#0f2650;
+      --gold:#e8b84b; --gold-light:#f5d080;
+      --white:#fff; --offwhite:#faf8f6; --gray-light:#f2f0ee; --gray:#888;
+      --text:#1a1a1a; --green:#2e7d32;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"Noto Sans JP",sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;}
+
+    header{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
+    .header-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .header-left{display:flex;align-items:center;gap:12px;}
+    .header-back{font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:4px;transition:all 0.2s;}
+    .header-back:hover{background:rgba(255,255,255,0.1);}
+    .logo-emblem{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:15px;color:var(--crimson-dark);flex-shrink:0;}
+    .logo-words .main{font-size:15px;font-weight:900;color:var(--white);}
+    .logo-words .sub{font-size:9px;color:var(--gold-light);letter-spacing:0.1em;}
+    .header-nav ul{display:flex;gap:2px;list-style:none;}
+    .header-nav ul li a{display:block;padding:7px 11px;color:rgba(255,255,255,0.88);font-size:11px;font-weight:700;text-decoration:none;border-radius:4px;transition:background 0.2s;}
+    .header-nav ul li a:hover{background:rgba(255,255,255,0.15);}
+    .header-nav ul li a.active{background:rgba(255,255,255,0.2);}
+    .btn-contact{background:var(--gold)!important;color:var(--crimson-dark)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);}
+
+    /* HERO */
+    .page-hero{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));padding:56px 24px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"JOIN US";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:80px;color:rgba(255,255,255,0.05);pointer-events:none;letter-spacing:0.1em;}
+    .page-hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;text-align:center;}
+    .page-hero-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:12px;text-transform:uppercase;}
+    .page-hero-title{font-size:clamp(24px,4vw,40px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:12px;}
+    .page-hero-desc{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;max-width:560px;margin:0 auto;}
+
+    .main-inner{max-width:1000px;margin:0 auto;padding:56px 24px;}
+
+    /* 無料バナー */
+    .free-banner{background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:12px;padding:24px 28px;text-align:center;margin-bottom:48px;}
+    .free-banner .fb-icon{font-size:36px;margin-bottom:8px;}
+    .free-banner .fb-title{font-size:22px;font-weight:900;color:var(--crimson-dark);margin-bottom:6px;letter-spacing:0.05em;}
+    .free-banner .fb-desc{font-size:13px;color:rgba(90,0,0,0.75);line-height:1.7;}
+
+    /* ステップ */
+    .steps-section{margin-bottom:56px;}
+    .sec-title{font-size:20px;font-weight:900;color:var(--crimson);border-bottom:3px solid var(--crimson);padding-bottom:10px;margin-bottom:28px;letter-spacing:0.05em;}
+    .steps{display:flex;flex-direction:column;gap:0;}
+    .step-item{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid #f0eeec;}
+    .step-item:last-child{border-bottom:none;}
+    .step-num-wrap{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0;}
+    .step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));color:var(--white);font-family:"Bebas Neue",sans-serif;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step-line{width:2px;height:40px;background:linear-gradient(to bottom,var(--crimson),transparent);margin-top:4px;}
+    .step-content{}
+    .step-title{font-size:16px;font-weight:900;color:#1a1a1a;margin-bottom:6px;letter-spacing:0.03em;}
+    .step-desc{font-size:13px;color:#555;line-height:1.8;}
+    .step-note{margin-top:10px;background:#fdf5f5;border-left:3px solid var(--crimson);border-radius:0 4px 4px 0;padding:8px 12px;font-size:12px;color:#555;line-height:1.6;}
+
+    /* 2チーム比較 */
+    .teams-section{margin-bottom:56px;}
+    .teams-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .team-card{border-radius:12px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,0.1);}
+    .team-card-head{padding:24px 24px 20px;}
+    .tc-boys-head{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));}
+    .tc-central-head{background:linear-gradient(135deg,var(--navy-dark),var(--navy));}
+    .tc-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.15em;margin-bottom:6px;text-transform:uppercase;}
+    .tc-name{font-size:22px;font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:8px;}
+    .tc-catch{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;}
+    .team-card-body{background:var(--white);padding:20px 24px;}
+    .info-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+    .info-list li{display:flex;gap:12px;font-size:13px;color:#333;line-height:1.5;align-items:flex-start;}
+    .info-list li .il-label{font-size:10px;font-weight:700;color:var(--white);padding:2px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:1px;}
+    .boys-label{background:var(--crimson);}
+    .central-label{background:var(--navy);}
+    .tc-btn{display:block;margin-top:16px;padding:10px;background:var(--crimson);color:var(--white);text-align:center;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;transition:all 0.2s;letter-spacing:0.05em;}
+    .tc-btn:hover{background:var(--crimson-dark);transform:translateY(-2px);}
+    .tc-btn-navy{background:var(--navy);}
+    .tc-btn-navy:hover{background:var(--navy-dark);}
+
+    /* 費用 */
+    .cost-section{margin-bottom:56px;}
+    .cost-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+    .cost-card{background:var(--white);border-radius:10px;padding:24px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.07);}
+    .cost-card .cc-icon{font-size:32px;margin-bottom:12px;}
+    .cost-card .cc-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;margin-bottom:8px;}
+    .cost-card .cc-value{font-size:24px;font-weight:900;color:var(--crimson);margin-bottom:4px;}
+    .cost-card .cc-note{font-size:11px;color:var(--gray);line-height:1.5;}
+    .cost-card.highlight{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));}
+    .cost-card.highlight .cc-label{color:rgba(255,255,255,0.7);}
+    .cost-card.highlight .cc-value{color:var(--gold);font-size:32px;}
+    .cost-card.highlight .cc-note{color:rgba(255,255,255,0.7);}
+
+    /* 持ち物 */
+    .items-section{margin-bottom:56px;}
+    .items-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .items-card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.07);}
+    .items-card-head{padding:14px 20px;display:flex;align-items:center;gap:10px;}
+    .ic-head-required{background:var(--crimson);}
+    .ic-head-optional{background:#555;}
+    .items-card-head span{font-size:13px;font-weight:900;color:var(--white);}
+    .items-list{padding:16px 20px;list-style:none;display:flex;flex-direction:column;gap:8px;}
+    .items-list li{display:flex;align-items:center;gap:8px;font-size:13px;color:#333;}
+    .items-list li::before{content:"✓";color:var(--green);font-weight:900;flex-shrink:0;}
+
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));border-radius:12px;padding:40px 32px;text-align:center;}
+    .cta-section h2{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:12px;}
+    .cta-section p{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.8;margin-bottom:28px;}
+    .cta-btn{display:inline-block;padding:14px 36px;background:var(--gold);color:var(--crimson-dark);border-radius:6px;font-size:15px;font-weight:900;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s;box-shadow:0 4px 16px rgba(232,184,75,0.4);}
+    .cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:40px 24px 24px;}
+    .footer-inner{max-width:1140px;margin:0 auto;}
+    .footer-logo .main{font-size:16px;font-weight:900;color:var(--white);margin-bottom:2px;}
+    .footer-logo .sub{font-size:9px;color:var(--gold);}
+    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;margin-top:12px;}
+    .footer-back:hover{color:var(--white);border-color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;margin-top:28px;}
+
+    .fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      .header-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--crimson-dark);padding:14px 20px;z-index:300;}
+      .header-nav.open{display:block;}
+      .header-nav ul{flex-direction:column;gap:4px;}
+      .header-nav ul li a{padding:11px 14px;font-size:14px;}
+      .teams-grid{grid-template-columns:1fr;}
+      .cost-grid{grid-template-columns:1fr 1fr;}
+      .items-grid{grid-template-columns:1fr;}
+      .main-inner{padding:32px 16px;}
+    }
+    @media(max-width:480px){
+      .cost-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="index.html" class="header-back">← TOP</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="logo-emblem">KC</div>
+        <div class="logo-words">
+          <div class="main">NPO法人 越谷K・クラブ</div>
+          <div class="sub">Koshigaya K-Club</div>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="header-nav" id="nav">
+      <ul>
+        <li><a href="about.html">法人について</a></li>
+        <li><a href="boys/index.html">越谷ボーイズ</a></li>
+        <li><a href="central/index.html">越谷中央ボーイズ</a></li>
+        <li><a href="join.html" class="active">入団案内</a></li>
+        <li><a href="access.html">アクセス</a></li>
+        <li><a href="contact.html" class="btn-contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">⚾ Join Us</div>
+    <div class="page-hero-title">入団案内</div>
+    <div class="page-hero-desc">越谷ボーイズ・越谷中央ボーイズ、両チームとも新入団選手を随時募集しています。体験練習は無料です。</div>
+  </div>
+</div>
+
+<div class="main-inner">
+
+  <!-- 無料バナー -->
+  <div class="free-banner fade-up">
+    <div class="fb-icon">🎉</div>
+    <div class="fb-title">体験練習は無料です！</div>
+    <div class="fb-desc">まずは気軽に体験してみてください。道具がなくても参加できます。<br>初心者・未経験者・女の子も大歓迎です。</div>
+  </div>
+
+  <!-- 入団までのステップ -->
+  <div class="steps-section">
+    <div class="sec-title">入団までの流れ</div>
+    <div class="steps">
+      <div class="step-item fade-up">
+        <div class="step-num-wrap">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">お問い合わせ</div>
+          <div class="step-desc">まずはお問い合わせフォームまたはメールにてご連絡ください。希望のチームや体験日程についてご相談できます。</div>
+          <div class="step-note">📧 koshigaya.k.club あっとまーく gmail.com</div>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-num-wrap">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">体験練習に参加</div>
+          <div class="step-desc">実際の練習に参加して雰囲気を体験してください。道具がなくても問題ありません。保護者の方も見学できます。</div>
+          <div class="step-note">✅ 体験練習は何度でも無料です</div>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-num-wrap">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">入団手続き</div>
+          <div class="step-desc">入団を希望される場合は入団申込書をご記入いただきます。費用・必要なものについてはスタッフがご説明します。</div>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-num-wrap">
+          <div class="step-num">4</div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">練習スタート！</div>
+          <div class="step-desc">入団手続き完了後、すぐに練習に参加できます。仲間と一緒に野球を楽しみましょう！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2チーム比較 -->
+  <div class="teams-section">
+    <div class="sec-title">チームを選ぶ</div>
+    <div class="teams-grid">
+      <div class="team-card fade-up">
+        <div class="team-card-head tc-boys-head">
+          <div class="tc-label">Team A</div>
+          <div class="tc-name">越谷ボーイズ</div>
+          <div class="tc-catch">埼玉県東支部所属の少年野球チーム</div>
+        </div>
+        <div class="team-card-body">
+          <ul class="info-list">
+            <li><span class="il-label boys-label">対象</span>小学生・中学生（男女問わず）</li>
+            <li><span class="il-label boys-label">活動</span>毎週日曜日・祝日</li>
+            <li><span class="il-label boys-label">場所</span>越谷市内グラウンド</li>
+            <li><span class="il-label boys-label">体験</span>無料・随時受付中</li>
+          </ul>
+          <a href="contact.html" class="tc-btn">越谷ボーイズに入団相談</a>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-card-head tc-central-head">
+          <div class="tc-label">Team B</div>
+          <div class="tc-name">越谷中央ボーイズ</div>
+          <div class="tc-catch">埼玉県東支部所属の少年野球チーム</div>
+        </div>
+        <div class="team-card-body">
+          <ul class="info-list">
+            <li><span class="il-label central-label">対象</span>小学生・中学生（男女問わず）</li>
+            <li><span class="il-label central-label">活動</span>毎週日曜日・祝日</li>
+            <li><span class="il-label central-label">場所</span>越谷市内グラウンド</li>
+            <li><span class="il-label central-label">体験</span>無料・随時受付中</li>
+          </ul>
+          <a href="contact.html" class="tc-btn tc-btn-navy">越谷中央ボーイズに入団相談</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 費用 -->
+  <div class="cost-section">
+    <div class="sec-title">費用について</div>
+    <div class="cost-grid">
+      <div class="cost-card highlight fade-up">
+        <div class="cc-icon">🎉</div>
+        <div class="cc-label">体験練習</div>
+        <div class="cc-value">無料</div>
+        <div class="cc-note">何度でも無料で参加できます</div>
+      </div>
+      <div class="cost-card fade-up">
+        <div class="cc-icon">📋</div>
+        <div class="cc-label">入団費</div>
+        <div class="cc-value">要確認</div>
+        <div class="cc-note">チームにより異なります。お問い合わせください。</div>
+      </div>
+      <div class="cost-card fade-up">
+        <div class="cc-icon">📅</div>
+        <div class="cc-label">月会費</div>
+        <div class="cc-value">要確認</div>
+        <div class="cc-note">チームにより異なります。お問い合わせください。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 体験時の持ち物 -->
+  <div class="items-section">
+    <div class="sec-title">体験参加の持ち物</div>
+    <div class="items-grid">
+      <div class="items-card fade-up">
+        <div class="items-card-head ic-head-required">
+          <span>必須の持ち物</span>
+        </div>
+        <ul class="items-list">
+          <li>動きやすい服装</li>
+          <li>運動靴（スパイクでなくてもOK）</li>
+          <li>帽子</li>
+          <li>タオル・水筒</li>
+          <li>保険証のコピー</li>
+        </ul>
+      </div>
+      <div class="items-card fade-up">
+        <div class="items-card-head ic-head-optional">
+          <span>あれば持ってくるもの</span>
+        </div>
+        <ul class="items-list">
+          <li>グローブ（なくてもOK）</li>
+          <li>バット（なくてもOK）</li>
+          <li>スパイク（なくてもOK）</li>
+          <li>ヘルメット（なくてもOK）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section fade-up">
+    <h2>⚾ まずは体験練習へ！</h2>
+    <p>道具がなくても・未経験でも大丈夫です。<br>気軽に参加して、野球の楽しさを体験してみてください。</p>
+    <a href="contact.html" class="cta-btn">無料体験に申し込む</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="main">NPO法人 越谷K・クラブ</div>
+      <div class="sub">Koshigaya K-Club Baseball Organization</div>
+      <a href="index.html" class="footer-back">← TOPへ戻る</a>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("hamburger").addEventListener("click",function(){
+  document.getElementById("nav").classList.toggle("open");
+});
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});
+},{threshold:0.1});
+document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
