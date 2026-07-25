@@ -2,115 +2,66 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>法人概要 | NPO法人 越谷K・クラブ</title>
-  <meta name="description" content="NPO法人 越谷K・クラブの法人概要・理念・活動内容についてご紹介します。">
+  <title>チーム紹介 | 越谷中央ボーイズ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --crimson:#8D0000; --crimson-dark:#5a0000;
-      --gold:#e8b84b; --gold-light:#f5d080;
-      --white:#fff; --offwhite:#faf8f6; --gray-light:#f2f0ee; --gray:#888;
-      --text:#1a1a1a;
-    }
+    :root{--crimson:#1a3a6e;--crimson-dark:#0f2650;--gold:#e8b84b;--gold-light:#f5d080;--white:#fff;--offwhite:#faf8f6;--gray-light:#f2f0ee;--gray:#888;--text:#1a1a1a;}
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
     body{font-family:"Noto Sans JP",sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;}
-
-    header{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
+    header{background:linear-gradient(135deg,#0f2650,#1a3a6e);position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
     .header-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
     .header-left{display:flex;align-items:center;gap:12px;}
     .header-back{font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:4px;transition:all 0.2s;}
     .header-back:hover{background:rgba(255,255,255,0.1);}
-    .logo-emblem{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:15px;color:var(--crimson-dark);flex-shrink:0;}
-    .logo-words .main{font-size:15px;font-weight:900;color:var(--white);}
+    .logo-emblem{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:13px;color:var(--crimson-dark);flex-shrink:0;}
+    .logo-words .main{font-size:14px;font-weight:900;color:var(--white);}
     .logo-words .sub{font-size:9px;color:var(--gold-light);letter-spacing:0.1em;}
     .header-nav ul{display:flex;gap:2px;list-style:none;}
     .header-nav ul li a{display:block;padding:7px 11px;color:rgba(255,255,255,0.88);font-size:11px;font-weight:700;text-decoration:none;border-radius:4px;transition:background 0.2s;}
     .header-nav ul li a:hover{background:rgba(255,255,255,0.15);}
     .header-nav ul li a.active{background:rgba(255,255,255,0.2);}
-    .btn-contact{background:var(--gold)!important;color:var(--crimson-dark)!important;}
+    .btn-join{background:var(--gold)!important;color:var(--crimson-dark)!important;}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
     .hamburger span{display:block;width:24px;height:2px;background:var(--white);}
-
-    /* HERO */
-    .page-hero{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));padding:56px 24px;position:relative;overflow:hidden;}
-    .page-hero::before{content:"ABOUT";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:80px;color:rgba(255,255,255,0.05);pointer-events:none;letter-spacing:0.1em;}
-    .page-hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;text-align:center;}
-    .page-hero-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:12px;text-transform:uppercase;}
-    .page-hero-title{font-size:clamp(24px,4vw,40px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:12px;}
-    .page-hero-desc{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;max-width:560px;margin:0 auto;}
-
+    .page-hero{background:linear-gradient(135deg,#0f2650,#1a3a6e);padding:56px 24px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"ABOUT";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:80px;color:rgba(255,255,255,0.05);pointer-events:none;}
+    .page-hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;}
+    .page-hero-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:8px;text-transform:uppercase;}
+    .page-hero-title{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:8px;}
+    .page-hero-desc{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.8;}
     .main-inner{max-width:1000px;margin:0 auto;padding:56px 24px;}
     .sec-title{font-size:20px;font-weight:900;color:var(--crimson);border-bottom:3px solid var(--crimson);padding-bottom:10px;margin-bottom:28px;letter-spacing:0.05em;}
-
-    /* 理念 */
-    .philosophy-section{margin-bottom:56px;}
-    .philosophy-box{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));border-radius:12px;padding:40px 36px;text-align:center;position:relative;overflow:hidden;}
-    .philosophy-box::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(-55deg,rgba(255,255,255,0.02) 0px,rgba(255,255,255,0.02) 1px,transparent 1px,transparent 36px);}
-    .philosophy-box .ph-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:16px;text-transform:uppercase;position:relative;z-index:2;}
-    .philosophy-box .ph-text{font-size:clamp(22px,4vw,32px);font-weight:900;color:var(--white);line-height:1.6;letter-spacing:0.06em;margin-bottom:20px;position:relative;z-index:2;}
-    .philosophy-box .ph-text .gold{color:var(--gold);}
-    .philosophy-box .ph-desc{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.9;max-width:560px;margin:0 auto;position:relative;z-index:2;}
-
-    /* 3つの価値観 */
-    .values-section{margin-bottom:56px;}
-    .values-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
-    .value-card{background:var(--white);border-radius:10px;padding:28px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.07);border-top:4px solid var(--crimson);}
-    .vc-icon{font-size:40px;margin-bottom:14px;}
-    .vc-title{font-size:16px;font-weight:900;color:var(--crimson);margin-bottom:10px;letter-spacing:0.05em;}
+    .philosophy-box{background:linear-gradient(135deg,#0f2650,#1a3a6e);border-radius:12px;padding:40px 36px;text-align:center;margin-bottom:48px;}
+    .ph-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:16px;text-transform:uppercase;}
+    .ph-text{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--white);line-height:1.6;letter-spacing:0.05em;margin-bottom:16px;}
+    .ph-desc{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.9;max-width:560px;margin:0 auto;}
+    .values-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:48px;}
+    .value-card{background:var(--white);border-radius:10px;padding:24px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.07);border-top:4px solid var(--crimson);}
+    .vc-icon{font-size:36px;margin-bottom:12px;}
+    .vc-title{font-size:15px;font-weight:900;color:var(--crimson);margin-bottom:8px;}
     .vc-desc{font-size:13px;color:#555;line-height:1.8;}
-
-    /* 法人概要テーブル */
-    .overview-section{margin-bottom:56px;}
-    .overview-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);}
-    .overview-table tr{border-bottom:1px solid #f0eeec;}
-    .overview-table tr:last-child{border-bottom:none;}
-    .overview-table th{background:var(--gray-light);padding:16px 20px;font-size:12px;font-weight:700;color:#555;letter-spacing:0.08em;text-align:left;width:160px;vertical-align:top;}
-    .overview-table td{padding:16px 20px;font-size:13px;color:#333;line-height:1.7;vertical-align:top;}
-
-    /* 沿革 */
-    .history-section{margin-bottom:56px;}
-    .history-list{list-style:none;display:flex;flex-direction:column;gap:0;}
-    .history-item{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #f0eeec;}
-    .history-item:last-child{border-bottom:none;}
-    .history-year{flex:0 0 80px;font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--crimson);letter-spacing:0.05em;line-height:1;}
-    .history-content{}
-    .history-title{font-size:14px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
-    .history-desc{font-size:13px;color:#666;line-height:1.6;}
-
-    /* 所属チーム */
-    .teams-section{margin-bottom:56px;}
-    .teams-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-    .team-mini-card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.07);text-decoration:none;display:block;transition:transform 0.2s,box-shadow 0.2s;}
-    .team-mini-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.12);}
-    .tmc-head{padding:20px 20px 16px;}
-    .tmc-boys{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));}
-    .tmc-central{background:linear-gradient(135deg,#0f2650,#1a3a6e);}
-    .tmc-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.15em;margin-bottom:4px;}
-    .tmc-name{font-size:18px;font-weight:900;color:var(--white);letter-spacing:0.05em;}
-    .tmc-body{padding:16px 20px;font-size:13px;color:#555;line-height:1.7;}
-    .tmc-link{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--crimson);text-decoration:none;border-bottom:2px solid var(--crimson);padding-bottom:2px;}
-
-    /* CTA */
-    .cta-box{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));border-radius:12px;padding:32px;text-align:center;}
+    .info-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:48px;}
+    .info-table tr{border-bottom:1px solid #f0eeec;}
+    .info-table tr:last-child{border-bottom:none;}
+    .info-table th{background:var(--gray-light);padding:16px 20px;font-size:12px;font-weight:700;color:#555;letter-spacing:0.08em;text-align:left;width:140px;}
+    .info-table td{padding:16px 20px;font-size:13px;color:#333;line-height:1.7;}
+    .cta-box{background:linear-gradient(135deg,#0f2650,#1a3a6e);border-radius:12px;padding:32px;text-align:center;}
     .cta-box h2{font-size:20px;font-weight:900;color:var(--white);margin-bottom:10px;}
     .cta-box p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:20px;}
-    .cta-btn{display:inline-block;padding:12px 32px;background:var(--gold);color:var(--crimson-dark);border-radius:6px;font-size:14px;font-weight:900;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s;}
+    .cta-btn{display:inline-block;padding:12px 32px;background:var(--gold);color:var(--crimson-dark);border-radius:6px;font-size:14px;font-weight:900;text-decoration:none;transition:all 0.2s;}
     .cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);}
-
-    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:40px 24px 24px;}
-    .footer-inner{max-width:1140px;margin:0 auto;}
-    .footer-logo .main{font-size:16px;font-weight:900;color:var(--white);margin-bottom:2px;}
+    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:32px 24px 20px;}
+    .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .footer-logo .main{font-size:14px;font-weight:900;color:var(--white);margin-bottom:2px;}
     .footer-logo .sub{font-size:9px;color:var(--gold);}
-    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;margin-top:12px;}
+    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;}
     .footer-back:hover{color:var(--white);border-color:var(--white);}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;margin-top:28px;}
-
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;margin-top:20px;}
     .fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
     .fade-up.visible{opacity:1;transform:translateY(0);}
-
     @media(max-width:768px){
       .hamburger{display:flex;}
       .header-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--crimson-dark);padding:14px 20px;z-index:300;}
@@ -118,217 +69,80 @@
       .header-nav ul{flex-direction:column;gap:4px;}
       .header-nav ul li a{padding:11px 14px;font-size:14px;}
       .values-grid{grid-template-columns:1fr;}
-      .teams-grid{grid-template-columns:1fr;}
-      .overview-table th{width:100px;}
       .main-inner{padding:32px 16px;}
     }
   </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
     <div class="header-left">
-      <a href="index.html" class="header-back">← TOP</a>
+      <a href="../index.html" class="header-back">← K・クラブTOP</a>
       <div style="display:flex;align-items:center;gap:10px;">
-        <div class="logo-emblem" style="background:transparent;padding:0;overflow:hidden;"><img src="favicon.png" alt="越谷K・クラブ" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
-        <div class="logo-words">
-          <div class="main">NPO法人 越谷K・クラブ</div>
-          <div class="sub">Koshigaya K-Club</div>
-        </div>
+        <div class="logo-emblem" style="background:transparent;padding:0;overflow:hidden;"><img src="/favicon.png" alt="越谷K・クラブ" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+        <div class="logo-words"><div class="main">越谷中央ボーイズ</div><div class="sub">Koshigaya Central Boys</div></div>
       </div>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     <nav class="header-nav" id="nav">
       <ul>
-        <li><a href="about.html" class="active">法人について</a></li>
-        <li><a href="boys/index.html">越谷ボーイズ</a></li>
-        <li><a href="central/index.html">越谷中央ボーイズ</a></li>
-        <li><a href="join.html">入団案内</a></li>
-        <li><a href="access.html">アクセス</a></li>
-        <li><a href="contact.html" class="btn-contact">お問い合わせ</a></li>
+        <li><a href="index.html">チームTOP</a></li>
+        <li><a href="about.html" class="active">チーム紹介</a></li>
+        <li><a href="members.html">スタッフ・選手</a></li>
+        <li><a href="results.html">試合結果</a></li>
+        <li><a href="schedule.html">スケジュール</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="../contact.html" class="btn-join">入団相談</a></li>
       </ul>
     </nav>
   </div>
 </header>
-
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-label">🏢 About</div>
-    <div class="page-hero-title">法人概要</div>
-    <div class="page-hero-desc">NPO法人 越谷K・クラブは越谷市を拠点に少年野球を通じた青少年育成を行う非営利組織です。</div>
+    <div class="page-hero-label">⚾ About Team</div>
+    <div class="page-hero-title">チーム紹介</div>
+    <div class="page-hero-desc">越谷中央ボーイズは埼玉県越谷市を拠点とする少年野球チームです。</div>
   </div>
 </div>
-
 <div class="main-inner">
-
-  <!-- 理念 -->
-  <div class="philosophy-section">
-    <div class="sec-title">私たちの理念</div>
-    <div class="philosophy-box fade-up">
-      <div class="ph-label">Our Philosophy</div>
-      <div class="ph-text">
-        地域の子どもたちに<br>
-        <span class="gold">野球の喜び</span>を届けたい
-      </div>
-      <div class="ph-desc">
-        野球は単なるスポーツではありません。仲間と共に汗を流し、勝利の喜びと敗北の悔しさを経験することで、子どもたちは人として大きく成長していきます。私たちは越谷市の地域に根ざし、子どもたちが安心して野球を楽しめる環境づくりを続けていきます。
-      </div>
-    </div>
+  <div class="philosophy-box fade-up">
+    <div class="ph-label">Team Philosophy</div>
+    <div class="ph-text">仲間と共に、野球を楽しもう</div>
+    <div class="ph-desc">野球を通じて技術だけでなく、礼儀・チームワーク・忍耐力を育てます。勝利の喜びも敗北の悔しさも、すべてが成長の糧になります。</div>
   </div>
-
-  <!-- 3つの価値観 -->
-  <div class="values-section">
-    <div class="sec-title">大切にしていること</div>
-    <div class="values-grid">
-      <div class="value-card fade-up">
-        <div class="vc-icon">🤝</div>
-        <div class="vc-title">礼儀・礼節</div>
-        <div class="vc-desc">挨拶・感謝・思いやりを大切に。野球を通じて社会で通用する礼儀を身につけます。</div>
-      </div>
-      <div class="value-card fade-up">
-        <div class="vc-icon">👥</div>
-        <div class="vc-title">チームワーク</div>
-        <div class="vc-desc">仲間を信頼し、支え合う心を育てます。一人ではできないことも仲間となら乗り越えられます。</div>
-      </div>
-      <div class="value-card fade-up">
-        <div class="vc-icon">💪</div>
-        <div class="vc-title">忍耐・努力</div>
-        <div class="vc-desc">諦めない心と努力する姿勢を育てます。練習を積み重ねることの大切さを体で覚えます。</div>
-      </div>
-    </div>
+  <div class="sec-title">大切にしていること</div>
+  <div class="values-grid">
+    <div class="value-card fade-up"><div class="vc-icon">🤝</div><div class="vc-title">礼儀・礼節</div><div class="vc-desc">挨拶・感謝・思いやりを大切に。野球を通じて社会で通用する礼儀を身につけます。</div></div>
+    <div class="value-card fade-up"><div class="vc-icon">👥</div><div class="vc-title">チームワーク</div><div class="vc-desc">仲間を信頼し支え合う心を育てます。一人ではできないことも仲間となら乗り越えられます。</div></div>
+    <div class="value-card fade-up"><div class="vc-icon">💪</div><div class="vc-title">忍耐・努力</div><div class="vc-desc">諦めない心と努力する姿勢を育てます。練習を積み重ねることの大切さを体で覚えます。</div></div>
   </div>
-
-  <!-- 法人概要 -->
-  <div class="overview-section">
-    <div class="sec-title">法人概要</div>
-    <table class="overview-table fade-up">
-      <tr>
-        <th>法人名</th>
-        <td>NPO法人 越谷K・クラブ</td>
-      </tr>
-      <tr>
-        <th>所在地</th>
-        <td>埼玉県越谷市（詳細はお問い合わせください）</td>
-      </tr>
-      <tr>
-        <th>設立</th>
-        <td>ヒアリング後に記載します</td>
-      </tr>
-      <tr>
-        <th>代表者</th>
-        <td>ヒアリング後に記載します</td>
-      </tr>
-      <tr>
-        <th>活動目的</th>
-        <td>少年野球を通じた青少年の健全育成・地域スポーツの振興</td>
-      </tr>
-      <tr>
-        <th>所属チーム</th>
-        <td>越谷ボーイズ・越谷中央ボーイズ（計2チーム）</td>
-      </tr>
-      <tr>
-        <th>所属連盟</th>
-        <td>埼玉県東支部 少年野球連盟</td>
-      </tr>
-      <tr>
-        <th>連絡先</th>
-        <td>koshigaya.k.club あっとまーく gmail.com</td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- 沿革 -->
-  <div class="history-section">
-    <div class="sec-title">沿革</div>
-    <ul class="history-list">
-      <li class="history-item fade-up">
-        <div class="history-year">2015</div>
-        <div class="history-content">
-          <div class="history-title">越谷K・クラブ 設立</div>
-          <div class="history-desc">越谷市を拠点に少年野球チームとして活動を開始。</div>
-        </div>
-      </li>
-      <li class="history-item fade-up">
-        <div class="history-year">20XX</div>
-        <div class="history-content">
-          <div class="history-title">NPO法人として認定</div>
-          <div class="history-desc">地域への貢献活動が認められ、NPO法人格を取得。</div>
-        </div>
-      </li>
-      <li class="history-item fade-up">
-        <div class="history-year">20XX</div>
-        <div class="history-content">
-          <div class="history-title">越谷中央ボーイズ 設立</div>
-          <div class="history-desc">活動エリアの拡大に伴い越谷中央ボーイズを新設。2チーム体制になる。</div>
-        </div>
-      </li>
-      <li class="history-item fade-up">
-        <div class="history-year">2025</div>
-        <div class="history-content">
-          <div class="history-title">公式サイト リニューアル</div>
-          <div class="history-desc">スマートフォン対応の新サイトを公開。LINEでの情報更新システムを導入。</div>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <!-- 所属チーム -->
-  <div class="teams-section">
-    <div class="sec-title">所属チーム</div>
-    <div class="teams-grid">
-      <a href="boys/index.html" class="team-mini-card fade-up">
-        <div class="tmc-head tmc-boys">
-          <div class="tmc-label">Team A</div>
-          <div class="tmc-name">越谷ボーイズ</div>
-        </div>
-        <div class="tmc-body">
-          埼玉県越谷市を拠点とする少年野球チームです。小学生・中学生が活動しています。
-          <div class="tmc-link">チームページを見る →</div>
-        </div>
-      </a>
-      <a href="central/index.html" class="team-mini-card fade-up">
-        <div class="tmc-head tmc-central">
-          <div class="tmc-label">Team B</div>
-          <div class="tmc-name">越谷中央ボーイズ</div>
-        </div>
-        <div class="tmc-body">
-          越谷市中央エリアを拠点とする少年野球チームです。小学生・中学生が活動しています。
-          <div class="tmc-link">チームページを見る →</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- CTA -->
+  <div class="sec-title">チーム基本情報</div>
+  <table class="info-table fade-up">
+    <tr><th>チーム名</th><td>越谷中央ボーイズ</td></tr>
+    <tr><th>所属法人</th><td>NPO法人 越谷K・クラブ</td></tr>
+    <tr><th>所属連盟</th><td>埼玉県東支部 少年野球連盟</td></tr>
+    <tr><th>対象</th><td>小学生・中学生（男女問わず）</td></tr>
+    <tr><th>活動日</th><td>毎週日曜日・祝日（土曜日は試合中心）</td></tr>
+    <tr><th>練習場所</th><td>越谷市内グラウンド（詳細はお問い合わせください）</td></tr>
+    <tr><th>体験参加</th><td>無料・随時受付中</td></tr>
+    <tr><th>創設</th><td>ヒアリング後に記載します</td></tr>
+  </table>
   <div class="cta-box fade-up">
     <h2>⚾ 入団のご相談はお気軽に</h2>
-    <p>越谷ボーイズ・越谷中央ボーイズとも随時入団募集中です。<br>体験練習は無料です。まずはご連絡ください。</p>
-    <a href="contact.html" class="cta-btn">お問い合わせはこちら</a>
+    <p>体験練習は無料です。初心者・未経験者も大歓迎！</p>
+    <a href="../contact.html" class="cta-btn">お問い合わせはこちら</a>
   </div>
-
 </div>
-
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">
-      <div class="main">NPO法人 越谷K・クラブ</div>
-      <div class="sub">Koshigaya K-Club Baseball Organization</div>
-      <a href="index.html" class="footer-back">← TOPへ戻る</a>
-    </div>
-    <div class="footer-bottom">
-      <p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p>
-    </div>
+    <div class="footer-logo"><div class="main">越谷中央ボーイズ</div><div class="sub">NPO法人 越谷K・クラブ</div></div>
+    <a href="index.html" class="footer-back">← チームTOPへ戻る</a>
   </div>
+  <div class="footer-bottom"><p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p></div>
 </footer>
-
 <script>
-document.getElementById("hamburger").addEventListener("click",function(){
-  document.getElementById("nav").classList.toggle("open");
-});
-var obs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});
-},{threshold:0.1});
+document.getElementById("hamburger").addEventListener("click",function(){document.getElementById("nav").classList.toggle("open");});
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
 document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
 </script>
 </body>
