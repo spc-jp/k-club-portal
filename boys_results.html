@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>試合結果 | 越谷ボーイズ</title>
+  <meta name="description" content="越谷ボーイズの試合結果一覧です。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --crimson:#8D0000; --crimson-dark:#5a0000; --crimson-light:#b30000;
+      --gold:#e8b84b; --gold-light:#f5d080;
+      --white:#fff; --offwhite:#faf8f6; --gray-light:#f2f0ee; --gray:#888;
+      --text:#1a1a1a; --green:#2e7d32;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"Noto Sans JP",sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;}
+
+    header{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
+    .header-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .header-left{display:flex;align-items:center;gap:12px;}
+    .header-back{font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:4px;transition:all 0.2s;}
+    .header-back:hover{background:rgba(255,255,255,0.1);}
+    .logo-emblem{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:13px;color:var(--crimson-dark);flex-shrink:0;}
+    .logo-words .main{font-size:14px;font-weight:900;color:var(--white);}
+    .logo-words .sub{font-size:9px;color:var(--gold-light);letter-spacing:0.1em;}
+    .header-nav ul{display:flex;gap:2px;list-style:none;}
+    .header-nav ul li a{display:block;padding:7px 11px;color:rgba(255,255,255,0.88);font-size:11px;font-weight:700;text-decoration:none;border-radius:4px;transition:background 0.2s;}
+    .header-nav ul li a:hover{background:rgba(255,255,255,0.15);}
+    .header-nav ul li a.active{background:rgba(255,255,255,0.2);}
+    .btn-join{background:var(--gold)!important;color:var(--crimson-dark)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);}
+
+    /* PAGE HERO */
+    .page-hero{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));padding:48px 24px;position:relative;overflow:hidden;}
+    .page-hero::before{content:"RESULTS";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:100px;color:rgba(255,255,255,0.05);pointer-events:none;letter-spacing:0.1em;}
+    .page-hero-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2;}
+    .page-hero-label{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.2em;margin-bottom:8px;text-transform:uppercase;}
+    .page-hero-title{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--white);letter-spacing:0.05em;margin-bottom:8px;}
+    .page-hero-desc{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;}
+
+    /* LINE更新バッジ */
+    .line-badge{display:inline-flex;align-items:center;gap:6px;background:#f0fff4;border:1px solid #06C755;color:#1a6e3a;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:12px;}
+
+    /* MAIN */
+    .main-inner{max-width:1140px;margin:0 auto;padding:48px 24px;}
+
+    /* フィルター */
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;align-items:center;}
+    .filter-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.1em;margin-right:4px;}
+    .filter-btn{padding:7px 16px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:2px solid #ddd;background:var(--white);color:#555;transition:all 0.2s;letter-spacing:0.05em;}
+    .filter-btn.active{background:var(--crimson);color:var(--white);border-color:var(--crimson);}
+    .filter-btn:hover:not(.active){border-color:var(--crimson);color:var(--crimson);}
+
+    /* 年度セクション */
+    .year-section{margin-bottom:48px;}
+    .year-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+    .year-badge{font-family:"Bebas Neue",sans-serif;font-size:36px;color:var(--crimson);letter-spacing:0.05em;line-height:1;}
+    .year-line{flex:1;height:2px;background:linear-gradient(to right,var(--crimson),transparent);}
+    .year-stats{display:flex;gap:16px;}
+    .year-stat{text-align:center;background:var(--white);border-radius:8px;padding:8px 16px;box-shadow:0 1px 6px rgba(0,0,0,0.07);}
+    .year-stat .ys-num{font-size:20px;font-weight:900;color:var(--crimson);}
+    .year-stat .ys-label{font-size:9px;color:var(--gray);font-weight:700;letter-spacing:0.05em;}
+
+    /* 試合カード */
+    .result-grid{display:flex;flex-direction:column;gap:12px;}
+    .result-card{background:var(--white);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.07);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+    .result-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+    .result-card-inner{display:flex;align-items:center;gap:0;}
+    .rc-date{flex:0 0 90px;padding:20px 16px;text-align:center;border-right:1px solid #f0eeec;}
+    .rc-date .rd-month{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.05em;}
+    .rc-date .rd-day{font-size:28px;font-weight:900;color:var(--crimson);line-height:1;}
+    .rc-date .rd-year{font-size:10px;color:var(--gray);}
+    .rc-tournament{flex:0 0 180px;padding:16px;border-right:1px solid #f0eeec;}
+    .rt-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:2px;margin-bottom:6px;letter-spacing:0.05em;}
+    .tag-win{background:#e8f5e9;color:#2e7d32;}
+    .tag-lose{background:#fce4ec;color:#c62828;}
+    .tag-draw{background:#f3e5f5;color:#6a1b9a;}
+    .rt-name{font-size:12px;font-weight:900;color:#333;line-height:1.4;}
+    .rc-score{flex:1;padding:16px 20px;display:flex;align-items:center;gap:16px;}
+    .score-vs{text-align:center;flex:1;}
+    .score-team{font-size:13px;font-weight:900;color:#1a1a1a;}
+    .score-num{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:1;letter-spacing:0.05em;}
+    .score-us{color:var(--crimson);}
+    .score-them{color:#999;}
+    .score-separator{font-family:"Bebas Neue",sans-serif;font-size:28px;color:#ccc;padding:0 8px;}
+    .rc-result{flex:0 0 80px;padding:16px;text-align:center;border-left:1px solid #f0eeec;}
+    .result-win{background:#e8f5e9;border-radius:6px;padding:8px;margin-bottom:4px;}
+    .result-lose{background:#fce4ec;border-radius:6px;padding:8px;margin-bottom:4px;}
+    .result-draw{background:#f3e5f5;border-radius:6px;padding:8px;margin-bottom:4px;}
+    .result-text{font-size:16px;font-weight:900;letter-spacing:0.1em;}
+    .win-text{color:#2e7d32;}
+    .lose-text{color:#c62828;}
+    .draw-text{color:#6a1b9a;}
+    .result-place{font-size:9px;color:var(--gray);line-height:1.4;}
+
+    /* LINE更新エリアの目印 */
+    .line-editable-wrap{position:relative;padding-top:32px;}
+    .line-editable-wrap::before{content:"📱 LINEで更新できるエリア";position:absolute;top:0;left:0;font-size:9px;font-weight:700;color:#06C755;background:#f0fff4;padding:3px 10px;border-radius:2px;border:1px solid #06C755;}
+
+    /* 集計 */
+    .summary-card{background:var(--white);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.07);padding:24px;margin-bottom:32px;}
+    .summary-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:0.1em;margin-bottom:16px;text-transform:uppercase;}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .summary-item{text-align:center;}
+    .si-num{font-family:"Bebas Neue",sans-serif;font-size:36px;line-height:1;margin-bottom:4px;}
+    .si-label{font-size:11px;font-weight:700;color:var(--gray);}
+    .si-win{color:var(--green);}
+    .si-lose{color:#c62828;}
+    .si-draw{color:#6a1b9a;}
+    .si-total{color:var(--crimson);}
+
+    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:32px 24px 20px;}
+    .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .footer-logo .main{font-size:14px;font-weight:900;color:var(--white);margin-bottom:2px;}
+    .footer-logo .sub{font-size:9px;color:var(--gold);}
+    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;}
+    .footer-back:hover{color:var(--white);border-color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;margin-top:20px;}
+
+    .fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      .header-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--crimson-dark);padding:14px 20px;z-index:300;}
+      .header-nav.open{display:block;}
+      .header-nav ul{flex-direction:column;gap:4px;}
+      .header-nav ul li a{padding:11px 14px;font-size:14px;}
+      .result-card-inner{flex-direction:column;align-items:stretch;}
+      .rc-date{flex:none;border-right:none;border-bottom:1px solid #f0eeec;display:flex;align-items:center;gap:12px;padding:12px 16px;}
+      .rc-date .rd-day{font-size:22px;}
+      .rc-tournament{flex:none;border-right:none;border-bottom:1px solid #f0eeec;padding:12px 16px;}
+      .rc-score{padding:12px 16px;}
+      .rc-result{flex:none;border-left:none;border-top:1px solid #f0eeec;padding:12px 16px;display:flex;align-items:center;gap:12px;}
+      .summary-grid{grid-template-columns:repeat(2,1fr);}
+      .year-stats{display:none;}
+      .score-num{font-size:28px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../index.html" class="header-back">← K・クラブTOP</a>
+      <div style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <div class="logo-emblem">KB</div>
+        <div class="logo-words">
+          <div class="main">越谷ボーイズ</div>
+          <div class="sub">Koshigaya Boys</div>
+        </div>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="header-nav" id="nav">
+      <ul>
+        <li><a href="index.html">チームTOP</a></li>
+        <li><a href="about.html">チーム紹介</a></li>
+        <li><a href="members.html">スタッフ・選手</a></li>
+        <li><a href="results.html" class="active">試合結果</a></li>
+        <li><a href="schedule.html">スケジュール</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="../contact.html" class="btn-join">入団相談</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">⚾ Results</div>
+    <div class="page-hero-title">試合結果</div>
+    <div class="page-hero-desc">越谷ボーイズの試合結果をお知らせします。</div>
+    <div class="line-badge">💬 このページはLINEで送るだけで自動更新されます</div>
+  </div>
+</div>
+
+<div class="main-inner">
+
+  <!-- 集計 -->
+  <div class="summary-card fade-up">
+    <div class="summary-title">2025年 通算成績</div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="si-num si-total">12</div><div class="si-label">試合数</div></div>
+      <div class="summary-item"><div class="si-num si-win">8</div><div class="si-label">勝利</div></div>
+      <div class="summary-item"><div class="si-num si-lose">3</div><div class="si-label">敗戦</div></div>
+      <div class="summary-item"><div class="si-num si-draw">1</div><div class="si-label">引分</div></div>
+    </div>
+  </div>
+
+  <!-- フィルター -->
+  <div class="filter-bar">
+    <span class="filter-label">絞り込み：</span>
+    <button class="filter-btn active" onclick="filterResults('all',this)">すべて</button>
+    <button class="filter-btn" onclick="filterResults('win',this)">勝利のみ</button>
+    <button class="filter-btn" onclick="filterResults('lose',this)">敗戦のみ</button>
+    <button class="filter-btn" onclick="filterResults('2025',this)">2025年</button>
+    <button class="filter-btn" onclick="filterResults('2024',this)">2024年</button>
+  </div>
+
+  <!-- 2025年 試合結果 LINEで更新エリア -->
+  <div class="year-section">
+    <div class="year-header">
+      <div class="year-badge">2025</div>
+      <div class="year-line"></div>
+      <div class="year-stats">
+        <div class="year-stat"><div class="ys-num" style="color:var(--green);">8</div><div class="ys-label">勝</div></div>
+        <div class="year-stat"><div class="ys-num" style="color:#c62828;">3</div><div class="ys-label">敗</div></div>
+        <div class="year-stat"><div class="ys-num" style="color:#6a1b9a;">1</div><div class="ys-label">分</div></div>
+      </div>
+    </div>
+
+    <div class="line-editable-wrap">
+      <div class="result-grid" id="results-2025">
+
+        <div class="result-card fade-up" data-result="win" data-year="2025">
+          <div class="result-card-inner">
+            <div class="rc-date">
+              <div><div class="rd-month">SEP</div><div class="rd-day">20</div><div class="rd-year">2025</div></div>
+            </div>
+            <div class="rc-tournament">
+              <span class="rt-tag tag-win">勝利</span>
+              <div class="rt-name">秋季東部支部大会<br>第1回戦</div>
+            </div>
+            <div class="rc-score">
+              <div class="score-vs">
+                <div class="score-team">越谷ボーイズ</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+                  <span class="score-num score-us">3</span>
+                  <span class="score-separator">-</span>
+                  <span class="score-num score-them">1</span>
+                </div>
+                <div class="score-team" style="color:#999;">春日部リトルリーグ</div>
+              </div>
+            </div>
+            <div class="rc-result">
+              <div class="result-win"><div class="result-text win-text">WIN</div></div>
+              <div class="result-place">越谷市民球場</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card fade-up" data-result="win" data-year="2025">
+          <div class="result-card-inner">
+            <div class="rc-date">
+              <div><div class="rd-month">AUG</div><div class="rd-day">25</div><div class="rd-year">2025</div></div>
+            </div>
+            <div class="rc-tournament">
+              <span class="rt-tag tag-win">勝利</span>
+              <div class="rt-name">夏季大会<br>準決勝</div>
+            </div>
+            <div class="rc-score">
+              <div class="score-vs">
+                <div class="score-team">越谷ボーイズ</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+                  <span class="score-num score-us">5</span>
+                  <span class="score-separator">-</span>
+                  <span class="score-num score-them">2</span>
+                </div>
+                <div class="score-team" style="color:#999;">草加シニア</div>
+              </div>
+            </div>
+            <div class="rc-result">
+              <div class="result-win"><div class="result-text win-text">WIN</div></div>
+              <div class="result-place">草加市野球場</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card fade-up" data-result="lose" data-year="2025">
+          <div class="result-card-inner">
+            <div class="rc-date">
+              <div><div class="rd-month">AUG</div><div class="rd-day">26</div><div class="rd-year">2025</div></div>
+            </div>
+            <div class="rc-tournament">
+              <span class="rt-tag tag-lose">敗戦</span>
+              <div class="rt-name">夏季大会<br>決勝</div>
+            </div>
+            <div class="rc-score">
+              <div class="score-vs">
+                <div class="score-team">越谷ボーイズ</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+                  <span class="score-num score-us">1</span>
+                  <span class="score-separator">-</span>
+                  <span class="score-num score-them">4</span>
+                </div>
+                <div class="score-team" style="color:#999;">さいたま選抜</div>
+              </div>
+            </div>
+            <div class="rc-result">
+              <div class="result-lose"><div class="result-text lose-text">LOSE</div></div>
+              <div class="result-place">さいたま市球場</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card fade-up" data-result="win" data-year="2025">
+          <div class="result-card-inner">
+            <div class="rc-date">
+              <div><div class="rd-month">JUL</div><div class="rd-day">13</div><div class="rd-year">2025</div></div>
+            </div>
+            <div class="rc-tournament">
+              <span class="rt-tag tag-win">勝利</span>
+              <div class="rt-name">春季大会<br>第3回戦</div>
+            </div>
+            <div class="rc-score">
+              <div class="score-vs">
+                <div class="score-team">越谷ボーイズ</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+                  <span class="score-num score-us">7</span>
+                  <span class="score-separator">-</span>
+                  <span class="score-num score-them">0</span>
+                </div>
+                <div class="score-team" style="color:#999;">吉川ジュニア</div>
+              </div>
+            </div>
+            <div class="rc-result">
+              <div class="result-win"><div class="result-text win-text">WIN</div></div>
+              <div class="result-place">越谷市グラウンド</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 2024年 -->
+  <div class="year-section">
+    <div class="year-header">
+      <div class="year-badge" style="color:var(--gray);">2024</div>
+      <div class="year-line" style="background:linear-gradient(to right,var(--gray),transparent);"></div>
+    </div>
+    <div class="result-grid">
+      <div class="result-card fade-up" data-result="win" data-year="2024">
+        <div class="result-card-inner">
+          <div class="rc-date">
+            <div><div class="rd-month">NOV</div><div class="rd-day">10</div><div class="rd-year">2024</div></div>
+          </div>
+          <div class="rc-tournament">
+            <span class="rt-tag tag-win">勝利</span>
+            <div class="rt-name">秋季大会<br>第2回戦</div>
+          </div>
+          <div class="rc-score">
+            <div class="score-vs">
+              <div class="score-team">越谷ボーイズ</div>
+              <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+                <span class="score-num score-us">4</span>
+                <span class="score-separator">-</span>
+                <span class="score-num score-them">2</span>
+              </div>
+              <div class="score-team" style="color:#999;">春日部リトルリーグ</div>
+            </div>
+          </div>
+          <div class="rc-result">
+            <div class="result-win"><div class="result-text win-text">WIN</div></div>
+            <div class="result-place">越谷市民球場</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="main">越谷ボーイズ 試合結果</div>
+      <div class="sub">NPO法人 越谷K・クラブ</div>
+    </div>
+    <a href="index.html" class="footer-back">← チームTOPへ戻る</a>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("hamburger").addEventListener("click",function(){
+  document.getElementById("nav").classList.toggle("open");
+});
+
+function filterResults(type, btn) {
+  document.querySelectorAll(".filter-btn").forEach(function(b){b.classList.remove("active");});
+  btn.classList.add("active");
+  document.querySelectorAll(".result-card").forEach(function(card){
+    if(type === "all"){
+      card.style.display = "";
+    } else if(type === "win" || type === "lose" || type === "draw"){
+      card.style.display = card.dataset.result === type ? "" : "none";
+    } else {
+      card.style.display = card.dataset.year === type ? "" : "none";
+    }
+  });
+}
+
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});
+},{threshold:0.1});
+document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
