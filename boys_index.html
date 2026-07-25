@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>越谷ボーイズ | NPO法人 越谷K・クラブ</title>
+  <meta name="description" content="越谷ボーイズは埼玉県越谷市を拠点とする少年野球チームです。小学生・中学生随時入団募集中。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --crimson:#8D0000; --crimson-dark:#5a0000; --crimson-light:#b30000;
+      --gold:#e8b84b; --gold-light:#f5d080;
+      --white:#fff; --offwhite:#faf8f6; --gray-light:#f2f0ee; --gray:#888;
+      --text:#1a1a1a;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"Noto Sans JP",sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;}
+
+    /* HEADER */
+    header{background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));position:sticky;top:0;z-index:200;box-shadow:0 3px 20px rgba(141,0,0,0.4);}
+    .header-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .header-left{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .header-back{font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;letter-spacing:0.05em;display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid rgba(255,255,255,0.25);border-radius:4px;transition:all 0.2s;}
+    .header-back:hover{background:rgba(255,255,255,0.1);}
+    .logo-emblem{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:15px;color:var(--crimson-dark);flex-shrink:0;}
+    .logo-words .main{font-size:15px;font-weight:900;color:var(--white);letter-spacing:0.05em;}
+    .logo-words .sub{font-size:9px;color:var(--gold-light);letter-spacing:0.1em;}
+    .header-nav ul{display:flex;gap:2px;list-style:none;}
+    .header-nav ul li a{display:block;padding:7px 11px;color:rgba(255,255,255,0.88);font-size:11px;font-weight:700;text-decoration:none;border-radius:4px;letter-spacing:0.05em;transition:background 0.2s;}
+    .header-nav ul li a:hover{background:rgba(255,255,255,0.15);}
+    .btn-join{background:var(--gold)!important;color:var(--crimson-dark)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);}
+
+    /* HERO */
+    .hero{background:linear-gradient(160deg,var(--crimson-dark) 0%,var(--crimson) 50%,#a50000 100%);position:relative;overflow:hidden;min-height:500px;display:flex;align-items:center;}
+    .hero-deco{position:absolute;right:-80px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,75,0.12) 0%,transparent 70%);pointer-events:none;}
+    .hero-stripe{position:absolute;inset:0;background-image:repeating-linear-gradient(-55deg,rgba(255,255,255,0.015) 0px,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 36px);pointer-events:none;}
+    .hero-inner{max-width:1140px;margin:0 auto;padding:72px 24px;position:relative;z-index:2;display:flex;align-items:center;gap:48px;}
+    .hero-text{flex:1;}
+    .hero-team-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,184,75,0.2);border:1px solid rgba(232,184,75,0.4);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.2em;padding:5px 14px;border-radius:2px;margin-bottom:16px;text-transform:uppercase;}
+    .hero-title{font-weight:900;color:var(--white);line-height:1.1;letter-spacing:0.04em;margin-bottom:12px;}
+    .hero-title .line1{font-size:clamp(12px,2vw,16px);color:rgba(255,255,255,0.65);display:block;font-weight:700;letter-spacing:0.2em;margin-bottom:4px;}
+    .hero-title .line2{font-size:clamp(42px,8vw,72px);display:block;line-height:1;}
+    .hero-title .gold{color:var(--gold);}
+    .hero-catch{font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,0.8);line-height:1.8;margin-bottom:10px;font-weight:700;}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:32px;max-width:440px;}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{display:inline-block;padding:12px 24px;border-radius:4px;font-weight:700;font-size:13px;letter-spacing:0.08em;text-decoration:none;transition:all 0.2s;}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--crimson-dark);box-shadow:0 4px 16px rgba(232,184,75,0.4);}
+    .btn-gold:hover{transform:translateY(-2px);}
+    .btn-outline{border:2px solid rgba(255,255,255,0.4);color:var(--white);}
+    .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1);}
+
+    /* ヒーロー右側 ダミー写真エリア */
+    .hero-img-area{flex:0 0 300px;display:flex;flex-direction:column;gap:10px;}
+    .hero-img-main{width:100%;height:200px;background:rgba(255,255,255,0.1);border:2px dashed rgba(255,255,255,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+    .hero-img-main .ph-icon{font-size:32px;opacity:0.5;}
+    .hero-img-main .ph-text{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;}
+    .hero-img-sub{display:flex;gap:10px;}
+    .hero-img-small{flex:1;height:90px;background:rgba(255,255,255,0.08);border:2px dashed rgba(255,255,255,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0.5;}
+
+    /* TICKER */
+    .ticker-bar{background:var(--gold);padding:10px 0;}
+    .ticker-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:14px;}
+    .ticker-tag{background:var(--crimson);color:var(--white);font-size:10px;font-weight:900;padding:3px 10px;border-radius:2px;white-space:nowrap;letter-spacing:0.1em;flex-shrink:0;}
+    .ticker-text{font-size:13px;font-weight:700;color:var(--crimson-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+    /* SECTION COMMON */
+    section{padding:64px 24px;}
+    .section-inner{max-width:1140px;margin:0 auto;}
+    .sec-head{display:flex;align-items:flex-end;gap:12px;padding-bottom:14px;border-bottom:3px solid var(--crimson);margin-bottom:36px;}
+    .sec-en{font-family:"Bebas Neue",sans-serif;font-size:40px;color:var(--crimson);letter-spacing:0.05em;line-height:1;}
+    .sec-ja{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:0.1em;padding-bottom:4px;}
+
+    /* NEWS - LINEで更新エリア */
+    .news-section{background:var(--white);}
+    .line-update-badge{display:inline-flex;align-items:center;gap:6px;background:#f0fff4;border:1px solid #06C755;color:#1a6e3a;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;margin-left:auto;letter-spacing:0.05em;}
+    .news-list{list-style:none;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .news-list li{border-bottom:1px solid #f0eeec;}
+    .news-list li:last-child{border-bottom:none;}
+    /* LINEで更新できるエリアの目印 */
+    .line-editable{position:relative;}
+    .line-editable::before{content:"📱 LINEで更新できるエリア";position:absolute;top:-28px;left:0;font-size:9px;font-weight:700;color:#06C755;letter-spacing:0.05em;background:#f0fff4;padding:3px 8px;border-radius:2px;border:1px solid #06C755;}
+    .news-list li a{display:flex;align-items:center;gap:12px;padding:15px 20px;text-decoration:none;color:var(--text);font-size:13px;transition:background 0.15s;}
+    .news-list li a:hover{background:#fdf5f5;}
+    .news-date{font-size:11px;color:var(--gray);white-space:nowrap;font-weight:700;flex-shrink:0;}
+    .news-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0;}
+    .tag-result{background:#2e7d32;color:#fff;}
+    .tag-event{background:#e65100;color:#fff;}
+    .tag-info{background:#555;color:#fff;}
+    .view-more{margin-top:20px;text-align:right;}
+    .view-more a{font-size:12px;font-weight:700;color:var(--crimson);text-decoration:none;border-bottom:2px solid var(--crimson);padding-bottom:2px;}
+
+    /* SCHEDULE - LINEで更新 */
+    .schedule-section{background:var(--gray-light);}
+    .schedule-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .schedule-table th{background:var(--crimson);color:var(--white);padding:12px 16px;font-size:12px;font-weight:700;letter-spacing:0.05em;text-align:left;}
+    .schedule-table td{padding:14px 16px;font-size:13px;border-bottom:1px solid #f0eeec;color:#333;vertical-align:middle;}
+    .schedule-table tr:last-child td{border-bottom:none;}
+    .schedule-table tr:hover td{background:#fdf5f5;}
+    .s-type{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;font-weight:700;}
+    .s-game{background:#8D0000;color:#fff;}
+    .s-practice{background:#1a3a6e;color:#fff;}
+    .s-event{background:#e65100;color:#fff;}
+
+    /* TEAM INFO */
+    .info-section{background:var(--white);}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+    .info-card{background:var(--gray-light);border-radius:10px;padding:24px;text-align:center;}
+    .info-card .ic-icon{font-size:32px;margin-bottom:12px;}
+    .info-card .ic-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:0.1em;margin-bottom:8px;}
+    .info-card .ic-value{font-size:15px;font-weight:900;color:var(--text);line-height:1.5;}
+
+    /* GALLERY - LINEで更新 */
+    .gallery-section{background:var(--gray-light);}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .gallery-item{aspect-ratio:1;background:var(--white);border-radius:8px;border:2px dashed #ddd;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;overflow:hidden;transition:transform 0.2s;}
+    .gallery-item:hover{transform:scale(1.02);}
+    .gallery-item .gi-icon{font-size:24px;opacity:0.4;}
+    .gallery-item .gi-text{font-size:10px;color:var(--gray);}
+    .gallery-item.filled{background:#f0f0f0;border:none;}
+
+    /* RECRUIT */
+    .recruit-section{background:linear-gradient(160deg,var(--crimson-dark),var(--crimson));position:relative;overflow:hidden;}
+    .recruit-section::before{content:"JOIN";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Bebas Neue",sans-serif;font-size:160px;color:rgba(255,255,255,0.04);pointer-events:none;}
+    .recruit-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:2;}
+    .recruit-text{flex:1;}
+    .recruit-label{display:inline-block;border:1px solid rgba(232,184,75,0.5);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.2em;padding:4px 12px;border-radius:2px;margin-bottom:14px;text-transform:uppercase;}
+    .recruit-title{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--white);letter-spacing:0.05em;line-height:1.4;margin-bottom:14px;}
+    .recruit-desc{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.9;margin-bottom:24px;}
+    .recruit-info{flex:0 0 260px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:24px;}
+    .recruit-info-title{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.15em;margin-bottom:14px;text-transform:uppercase;}
+    .recruit-info-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+    .recruit-info-list li{display:flex;gap:10px;font-size:12px;color:rgba(255,255,255,0.85);}
+    .recruit-info-list li .rl{font-size:10px;font-weight:700;color:var(--gold);white-space:nowrap;margin-top:2px;flex-shrink:0;}
+
+    /* LINE更新の仕組み説明 */
+    .line-section{background:#f0fff4;border-top:3px solid #06C755;}
+    .line-inner{max-width:1140px;margin:0 auto;padding:48px 24px;}
+    .line-title{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+    .line-title-icon{width:48px;height:48px;background:#06C755;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+    .line-title-text .main{font-size:18px;font-weight:900;color:#1a1a1a;letter-spacing:0.05em;}
+    .line-title-text .sub{font-size:12px;color:#555;margin-top:2px;}
+    .line-flow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;}
+    .line-flow-item{background:var(--white);border-radius:10px;padding:16px 20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.07);flex:1;min-width:140px;max-width:200px;}
+    .lfi-icon{font-size:28px;margin-bottom:8px;}
+    .lfi-title{font-size:12px;font-weight:900;color:#1a1a1a;margin-bottom:4px;}
+    .lfi-desc{font-size:10px;color:#666;line-height:1.5;}
+    .line-flow-arrow{font-size:24px;color:#06C755;font-weight:900;flex-shrink:0;}
+    .line-example{margin-top:28px;background:var(--white);border-radius:10px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,0.07);}
+    .le-title{font-size:11px;font-weight:700;color:#06C755;letter-spacing:0.1em;margin-bottom:12px;}
+    .le-examples{display:flex;flex-direction:column;gap:8px;}
+    .le-item{background:#f0fff4;border-left:3px solid #06C755;border-radius:0 6px 6px 0;padding:8px 14px;font-size:12px;color:#1a4a1a;line-height:1.6;}
+
+    /* FOOTER */
+    footer{background:#1a0000;color:rgba(255,255,255,0.55);padding:40px 24px 20px;}
+    .footer-inner{max-width:1140px;margin:0 auto;}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-bottom:28px;flex-wrap:wrap;}
+    .footer-logo .main{font-size:16px;font-weight:900;color:var(--white);margin-bottom:2px;}
+    .footer-logo .sub{font-size:9px;color:var(--gold);letter-spacing:0.12em;}
+    .footer-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:4px;transition:all 0.2s;margin-top:12px;}
+    .footer-back:hover{color:var(--white);border-color:var(--white);}
+    .footer-nav ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+    .footer-nav ul li a{font-size:12px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+    .footer-nav ul li a:hover{color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;font-size:11px;}
+
+    /* FADE UP */
+    .fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-inner{flex-direction:column;gap:32px;}
+      .hero-img-area{flex:none;width:100%;}
+      .info-grid{grid-template-columns:1fr 1fr;}
+      .gallery-grid{grid-template-columns:repeat(3,1fr);}
+      .recruit-inner{flex-direction:column;gap:28px;}
+      .recruit-info{flex:none;width:100%;}
+      .footer-top{flex-direction:column;gap:20px;}
+    }
+    @media(max-width:768px){
+      .hamburger{display:flex;}
+      .header-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--crimson-dark);padding:14px 20px;z-index:300;}
+      .header-nav.open{display:block;}
+      .header-nav ul{flex-direction:column;gap:4px;}
+      .header-nav ul li a{padding:11px 14px;font-size:14px;}
+      section{padding:48px 20px;}
+      .info-grid{grid-template-columns:1fr;}
+      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+      .line-flow{flex-direction:column;}
+      .line-flow-arrow{transform:rotate(90deg);}
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../index.html" class="header-back">← K・クラブTOP</a>
+      <a href="index.html" class="header-left" style="text-decoration:none;">
+        <div class="logo-emblem">KB</div>
+        <div class="logo-words">
+          <div class="main">越谷ボーイズ</div>
+          <div class="sub">Koshigaya Boys</div>
+        </div>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="header-nav" id="nav">
+      <ul>
+        <li><a href="index.html">チームTOP</a></li>
+        <li><a href="about.html">チーム紹介</a></li>
+        <li><a href="members.html">スタッフ・選手</a></li>
+        <li><a href="results.html">試合結果</a></li>
+        <li><a href="schedule.html">スケジュール</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="../contact.html" class="btn-join">入団相談</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-team-badge">⚾ Team A / Koshigaya Boys</div>
+      <h1 class="hero-title">
+        <span class="line1">越谷K・クラブ</span>
+        <span class="line2">越谷<span class="gold">ボーイズ</span></span>
+      </h1>
+      <p class="hero-catch">仲間と共に、野球を楽しもう</p>
+      <p class="hero-sub">
+        埼玉県越谷市を拠点とする少年野球チームです。<br>
+        礼儀・チームワーク・忍耐力を野球を通じて育てます。<br>
+        小学生・中学生、随時入団募集中です。
+      </p>
+      <div class="hero-btns">
+        <a href="../contact.html" class="btn btn-gold">⚾ 入団のご相談はこちら</a>
+        <a href="about.html" class="btn btn-outline">チームを詳しく見る</a>
+      </div>
+    </div>
+    <div class="hero-img-area">
+      <div class="hero-img-main">
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">チーム写真をここに配置</div>
+      </div>
+      <div class="hero-img-sub">
+        <div class="hero-img-small">⚾</div>
+        <div class="hero-img-small">🏆</div>
+        <div class="hero-img-small">👥</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <span class="ticker-tag">最新情報</span>
+    <span class="ticker-text">秋季埼玉県東支部大会 結果を掲載しました ／ 2025年度 新入団選手を随時募集中です</span>
+  </div>
+</div>
+
+<!-- NEWS -->
+<section class="news-section">
+  <div class="section-inner">
+    <div class="sec-head">
+      <div><div class="sec-en">NEWS</div><div class="sec-ja">試合結果・お知らせ</div></div>
+      <span class="line-update-badge">💬 LINEで更新</span>
+    </div>
+
+    <!-- LINEで更新できるエリア -->
+    <div style="padding-top:32px;">
+      <ul class="news-list line-editable">
+        <li class="fade-up"><a href="results.html">
+          <span class="news-date">2025.09.20</span>
+          <span class="news-tag tag-result">試合結果</span>
+          <span>秋季東部支部大会 対春日部リトルリーグ 3対1で勝利しました</span>
+        </a></li>
+        <li class="fade-up"><a href="schedule.html">
+          <span class="news-date">2025.09.15</span>
+          <span class="news-tag tag-event">イベント</span>
+          <span>秋季強化合宿を実施しました。写真をギャラリーに追加しています</span>
+        </a></li>
+        <li class="fade-up"><a href="#">
+          <span class="news-date">2025.09.01</span>
+          <span class="news-tag tag-info">お知らせ</span>
+          <span>2025年度 後期の練習スケジュールを更新しました</span>
+        </a></li>
+        <li class="fade-up"><a href="#">
+          <span class="news-date">2025.08.20</span>
+          <span class="news-tag tag-result">試合結果</span>
+          <span>夏季大会 準優勝！選手の皆さんお疲れ様でした</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="view-more"><a href="results.html">試合結果をすべて見る →</a></div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section">
+  <div class="section-inner">
+    <div class="sec-head">
+      <div><div class="sec-en">SCHEDULE</div><div class="sec-ja">練習・試合スケジュール</div></div>
+      <span class="line-update-badge">💬 LINEで更新</span>
+    </div>
+    <div style="padding-top:28px;">
+      <table class="schedule-table line-editable">
+        <thead>
+          <tr>
+            <th style="width:110px;">日付</th>
+            <th style="width:80px;">種別</th>
+            <th>内容</th>
+            <th style="width:120px;">場所</th>
+            <th style="width:100px;">時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fade-up">
+            <td>10月5日（日）</td>
+            <td><span class="s-type s-game">試合</span></td>
+            <td>秋季東部支部大会 第2回戦</td>
+            <td>越谷市民球場</td>
+            <td>9:00〜</td>
+          </tr>
+          <tr class="fade-up">
+            <td>10月12日（日）</td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td>通常練習</td>
+            <td>越谷市グラウンド</td>
+            <td>9:00〜12:00</td>
+          </tr>
+          <tr class="fade-up">
+            <td>10月19日（日）</td>
+            <td><span class="s-type s-game">試合</span></td>
+            <td>招待試合 vs 草加シニア</td>
+            <td>草加市野球場</td>
+            <td>10:00〜</td>
+          </tr>
+          <tr class="fade-up">
+            <td>10月26日（日）</td>
+            <td><span class="s-type s-practice">練習</span></td>
+            <td>通常練習・打撃強化</td>
+            <td>越谷市グラウンド</td>
+            <td>9:00〜12:00</td>
+          </tr>
+          <tr class="fade-up">
+            <td>11月3日（月祝）</td>
+            <td><span class="s-type s-event">イベント</span></td>
+            <td>秋季大会 表彰式・保護者会</td>
+            <td>越谷市民会館</td>
+            <td>13:00〜</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="view-more" style="margin-top:16px;"><a href="schedule.html">スケジュールをすべて見る →</a></div>
+  </div>
+</section>
+
+<!-- TEAM INFO -->
+<section class="info-section">
+  <div class="section-inner">
+    <div class="sec-head">
+      <div><div class="sec-en">TEAM INFO</div><div class="sec-ja">チーム基本情報</div></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card fade-up">
+        <div class="ic-icon">⚾</div>
+        <div class="ic-title">対象年齢</div>
+        <div class="ic-value">小学生・中学生<br>（男女問わず）</div>
+      </div>
+      <div class="info-card fade-up">
+        <div class="ic-icon">📅</div>
+        <div class="ic-title">活動日</div>
+        <div class="ic-value">毎週日曜日・祝日<br>（土曜日は試合中心）</div>
+      </div>
+      <div class="info-card fade-up">
+        <div class="ic-icon">📍</div>
+        <div class="ic-title">練習場所</div>
+        <div class="ic-value">越谷市内グラウンド<br>（詳細はお問い合わせ）</div>
+      </div>
+      <div class="info-card fade-up">
+        <div class="ic-icon">💰</div>
+        <div class="ic-title">体験参加</div>
+        <div class="ic-value">無料<br>（お気軽にどうぞ）</div>
+      </div>
+      <div class="info-card fade-up">
+        <div class="ic-icon">👥</div>
+        <div class="ic-title">指導スタッフ</div>
+        <div class="ic-value">経験豊かな<br>コーチ陣が指導</div>
+      </div>
+      <div class="info-card fade-up">
+        <div class="ic-icon">🏆</div>
+        <div class="ic-title">所属リーグ</div>
+        <div class="ic-value">埼玉県東支部<br>少年野球連盟</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="section-inner">
+    <div class="sec-head">
+      <div><div class="sec-en">GALLERY</div><div class="sec-ja">活動写真</div></div>
+      <span class="line-update-badge">💬 LINEで更新</span>
+    </div>
+    <div style="padding-top:28px;">
+      <div class="gallery-grid line-editable">
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">試合写真</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">練習風景</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">集合写真</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">表彰式</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">合宿</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">打撃練習</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">📸</div><div class="gi-text">守備練習</div></div>
+        <div class="gallery-item fade-up"><div class="gi-icon">➕</div><div class="gi-text">写真を追加</div></div>
+      </div>
+    </div>
+    <div class="view-more" style="margin-top:16px;"><a href="gallery.html">ギャラリーをすべて見る →</a></div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit-section">
+  <div class="recruit-inner">
+    <div class="recruit-text fade-up">
+      <div class="recruit-label">RECRUITMENT</div>
+      <h2 class="recruit-title">一緒に野球をしよう！<br>新入団選手 募集中</h2>
+      <p class="recruit-desc">小学生・中学生の選手を随時募集しています。<br>体験練習は無料です。初心者・未経験者も大歓迎！<br>まずはお気軽にご連絡ください。</p>
+      <a href="../contact.html" class="btn btn-gold">⚾ 無料体験に申し込む</a>
+    </div>
+    <div class="recruit-info fade-up">
+      <div class="recruit-info-title">入団情報</div>
+      <ul class="recruit-info-list">
+        <li><span class="rl">対象</span><span>小学生・中学生（男女問わず）</span></li>
+        <li><span class="rl">体験</span><span>無料・随時受付中</span></li>
+        <li><span class="rl">練習</span><span>週末・祝日を中心に実施</span></li>
+        <li><span class="rl">費用</span><span>入団後の費用はお問い合わせください</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LINE更新の仕組み説明（内部向け） -->
+<div class="line-section">
+  <div class="line-inner">
+    <div class="line-title">
+      <div class="line-title-icon">💬</div>
+      <div class="line-title-text">
+        <div class="main">LINEで送るだけで このサイトが更新されます</div>
+        <div class="sub">広報担当向け ／ サイト更新の仕組みについて</div>
+      </div>
+    </div>
+    <div class="line-flow">
+      <div class="line-flow-item fade-up">
+        <div class="lfi-icon">📱</div>
+        <div class="lfi-title">LINEで送る</div>
+        <div class="lfi-desc">試合結果や写真をいつものLINEで送るだけ</div>
+      </div>
+      <div class="line-flow-arrow">→</div>
+      <div class="line-flow-item fade-up">
+        <div class="lfi-icon">🤖</div>
+        <div class="lfi-title">AIが自動処理</div>
+        <div class="lfi-desc">内容を読み取ってサイト用のデータに変換</div>
+      </div>
+      <div class="line-flow-arrow">→</div>
+      <div class="line-flow-item fade-up">
+        <div class="lfi-icon">⚡</div>
+        <div class="lfi-title">即時反映</div>
+        <div class="lfi-desc">数分でサイトに自動反映されます</div>
+      </div>
+      <div class="line-flow-arrow">→</div>
+      <div class="line-flow-item fade-up">
+        <div class="lfi-icon">🌐</div>
+        <div class="lfi-title">全員が確認</div>
+        <div class="lfi-desc">保護者・入団希望者がすぐ確認できる</div>
+      </div>
+    </div>
+    <div class="line-example">
+      <div class="le-title">💬 LINEの送り方の例</div>
+      <div class="le-examples">
+        <div class="le-item">「試合結果：9月20日 対春日部リトルリーグ 3対1 勝利」</div>
+        <div class="le-item">「スケジュール追加：10月5日（日）9時〜 越谷市民球場 秋季大会第2回戦」</div>
+        <div class="le-item">「写真追加します」＋写真を送信 → ギャラリーに自動追加</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="main">越谷ボーイズ</div>
+        <div class="sub">NPO法人 越谷K・クラブ / Team A</div>
+        <a href="../index.html" class="footer-back">← NPO法人 越谷K・クラブTOPへ</a>
+      </div>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="index.html">チームTOP</a></li>
+          <li><a href="about.html">チーム紹介</a></li>
+          <li><a href="members.html">スタッフ・選手紹介</a></li>
+          <li><a href="results.html">試合結果</a></li>
+          <li><a href="schedule.html">スケジュール</a></li>
+          <li><a href="gallery.html">ギャラリー</a></li>
+          <li><a href="../contact.html">入団のご相談</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 NPO法人 越谷K・クラブ All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("hamburger").addEventListener("click",function(){
+  document.getElementById("nav").classList.toggle("open");
+});
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});
+},{threshold:0.1});
+document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
