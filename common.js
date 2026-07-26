@@ -178,10 +178,43 @@ function injectCanonical() {
   }
 }
 
+// ========== Apple Touch Icon（iPhoneホーム画面用）==========
+function injectAppleTouchIcon() {
+  var isSubDir = window.location.pathname.indexOf("/boys/") !== -1 || window.location.pathname.indexOf("/central/") !== -1;
+  var iconPath = isSubDir ? "../favicon.png" : "favicon.png";
+  if(!document.querySelector('link[rel="apple-touch-icon"]')){
+    var l = document.createElement("link");
+    l.rel = "apple-touch-icon";
+    l.setAttribute("sizes","200x200");
+    l.href = iconPath;
+    document.head.appendChild(l);
+  }
+  // iOSのステータスバー設定
+  if(!document.querySelector('meta[name="apple-mobile-web-app-capable"]')){
+    var m1 = document.createElement("meta");
+    m1.name = "apple-mobile-web-app-capable";
+    m1.content = "yes";
+    document.head.appendChild(m1);
+  }
+  if(!document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')){
+    var m2 = document.createElement("meta");
+    m2.name = "apple-mobile-web-app-status-bar-style";
+    m2.content = "black-translucent";
+    document.head.appendChild(m2);
+  }
+  if(!document.querySelector('meta[name="apple-mobile-web-app-title"]')){
+    var m3 = document.createElement("meta");
+    m3.name = "apple-mobile-web-app-title";
+    m3.content = "越谷K・クラブ";
+    document.head.appendChild(m3);
+  }
+}
+
 // ========== 実行 ==========
 document.addEventListener("DOMContentLoaded", function() {
   injectFloating();
   injectJsonLd();
   injectOgp();
   injectCanonical();
+  injectAppleTouchIcon();
 });
