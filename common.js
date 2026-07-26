@@ -30,12 +30,12 @@ function injectFloating() {
   var wrap = document.createElement("div");
   wrap.className = "floating-btns";
 
-  // トップへ戻るボタン
+  // トップへ戻るボタン（タップ：ページトップ / 長押し：サイトトップ）
   var topBtn = document.createElement("a");
   topBtn.href = "#";
   topBtn.className = "float-top";
   topBtn.setAttribute("aria-label", "トップへ戻る");
-  topBtn.onclick = function(){ window.scrollTo({top:0,behavior:"smooth"}); return false; };
+
   var topSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
   topSvg.setAttribute("width","20"); topSvg.setAttribute("height","20");
   topSvg.setAttribute("viewBox","0 0 24 24"); topSvg.setAttribute("fill","none");
@@ -45,6 +45,52 @@ function injectFloating() {
   topPath.setAttribute("d","M18 15l-6-6-6 6");
   topSvg.appendChild(topPath);
   topBtn.appendChild(topSvg);
+
+  // 長押し用タイマー
+  var pressTimer = null;
+  var isLongPress = false;
+
+  // タッチ開始
+  topBtn.addEventListener("touchstart", function(e){
+    isLongPress = false;
+    topBtn.style.background = "#e8b84b";
+    pressTimer = setTimeout(function(){
+      isLongPress = true;
+      topBtn.style.background = "#e8b84b";
+      // サイトトップへ移動
+      var siteTop = isRoot ? "/" : "../";
+      window.location.href = siteTop + "index.html";
+    }, 800);
+  }, {passive: true});
+
+  // タッチ終了
+  topBtn.addEventListener("touchend", function(e){
+    clearTimeout(pressTimer);
+    topBtn.style.background = "#8D0000";
+    if(!isLongPress){
+      e.preventDefault();
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+  });
+
+  // タッチキャンセル
+  topBtn.addEventListener("touchcancel", function(){
+    clearTimeout(pressTimer);
+    topBtn.style.background = "#8D0000";
+  });
+
+  // PC用クリック
+  topBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    if(!isLongPress){ window.scrollTo({top:0,behavior:"smooth"}); }
+  });
+
+  // PC用ダブルクリック
+  topBtn.addEventListener("dblclick", function(e){
+    e.preventDefault();
+    window.location.href = (isRoot ? "" : "../") + "index.html";
+  });
+
   wrap.appendChild(topBtn);
 
   // 入団相談ボタン
