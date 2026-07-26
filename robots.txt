@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://k-club-portal.pages.dev/sitemap.xml
