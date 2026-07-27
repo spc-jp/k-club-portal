@@ -13,6 +13,71 @@ var sitePath = window.location.pathname;
 var isRoot = sitePath.indexOf("/boys/") === -1 && sitePath.indexOf("/central/") === -1;
 var prefix = isRoot ? "" : "../";
 
+// ========== 共通ヘッダー ==========
+// メニューを増やしたい時は、下の NAV 配列に1行足すだけで全ページに反映されます。
+var NAV = [
+  { label: "法人について",     href: "about.html",   key: "about.html"  },
+  { label: "越谷ボーイズ",     href: "boys/",        key: "/boys/"      },
+  { label: "越谷中央ボーイズ", href: "central/",     key: "/central/"   },
+  { label: "お知らせ",         href: "news.html",    key: "news.html"   },
+  { label: "入団案内",         href: "join.html",    key: "join.html"   },
+  { label: "よくある質問",     href: "faq.html",     key: "faq.html"    },
+  { label: "アクセス",         href: "access.html",  key: "access.html" },
+  { label: "お問い合わせ",     href: "contact.html", key: "contact.html", contact: true }
+];
+
+function injectHeader() {
+  // 安全装置：ページに既にヘッダーが書かれている場合は何もしない（二重表示を防止）
+  // → 各ページから古い <header> を消したページだけ、この共通ヘッダーが入ります
+  if (document.querySelector("header")) { return; }
+
+  var css = [
+    ".kc-head{background:linear-gradient(100deg,#6e0000 0%,#8f0000 55%,#7d0012 100%);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,0.25);}",
+    ".kc-inner{max-width:1120px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-sizing:border-box;}",
+    ".kc-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;}",
+    ".kc-brand img{width:46px;height:46px;border-radius:50%;flex:none;background:#fff;object-fit:cover;box-shadow:0 0 0 2px rgba(232,184,75,0.65);}",
+    ".kc-name{font-weight:800;font-size:17px;letter-spacing:0.02em;line-height:1.25;}",
+    ".kc-name small{display:block;font-size:10.5px;font-weight:600;color:#f0d9a6;letter-spacing:0.03em;}",
+    ".kc-nav ul{list-style:none;display:flex;gap:3px;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;align-items:center;}",
+    ".kc-nav a{text-decoration:none;color:#fff;font-size:13.5px;font-weight:700;padding:8px 12px;border-radius:20px;white-space:nowrap;transition:background .2s,color .2s;}",
+    ".kc-nav a:hover{background:rgba(255,255,255,0.15);}",
+    ".kc-nav a.current{color:#e8b84b;}",
+    ".kc-nav a.contact{background:#e8b84b;color:#5a0000;margin-left:4px;}",
+    ".kc-nav a.contact:hover{background:#f3ca6a;}",
+    "@media(max-width:820px){.kc-inner{flex-direction:column;align-items:stretch;}.kc-nav ul{justify-content:center;}}"
+  ].join("");
+  var style = document.createElement("style");
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  var path = window.location.pathname;
+
+  // メニュー項目のHTMLを組み立て
+  var lis = NAV.map(function(it){
+    var cls = it.contact ? "contact" : "";
+    // 現在ページをゴールドでハイライト
+    if (path.indexOf(it.key) !== -1) {
+      cls += (cls ? " " : "") + "current";
+    }
+    var clsAttr = cls ? ' class="' + cls + '"' : '';
+    return '<li><a href="' + prefix + it.href + '"' + clsAttr + '>' + it.label + '</a></li>';
+  }).join("");
+
+  var header = document.createElement("header");
+  header.className = "kc-head";
+  header.innerHTML =
+    '<div class="kc-inner">' +
+      '<a class="kc-brand" href="' + prefix + 'index.html">' +
+        '<img src="' + prefix + 'favicon.png" alt="越谷K・クラブ ロゴ">' +
+        '<span class="kc-name">NPO法人 越谷K・クラブ<small>Koshigaya K-Club Baseball Organization</small></span>' +
+      '</a>' +
+      '<nav class="kc-nav"><ul>' + lis + '</ul></nav>' +
+    '</div>';
+
+  // ページの一番上に差し込む
+  document.body.insertBefore(header, document.body.firstChild);
+}
+
 // ========== フローティングボタン ==========
 function injectFloating() {
   var style = document.createElement("style");
@@ -212,6 +277,7 @@ function injectAppleTouchIcon() {
 
 // ========== 実行 ==========
 document.addEventListener("DOMContentLoaded", function() {
+  injectHeader();
   injectFloating();
   injectJsonLd();
   injectOgp();
