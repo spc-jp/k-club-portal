@@ -321,8 +321,31 @@ function ensureFaqInNav() {
   if (ref) { navUl.insertBefore(li, ref); } else { navUl.appendChild(li); }
 }
 
+// ========== メニューの折り返し防止＆画面幅に応じた最適化（全ページ共通）==========
+// 項目が多くても、広い画面は一行に、中くらいの画面は三本線メニューに自動で切替えます。
+function injectNavFix() {
+  if (document.getElementById("kc-navfix")) { return; }
+  var css = ""
+    + "@media (min-width:1081px){"
+    +   ".header-nav ul{gap:3px;}"
+    +   ".header-nav ul li a{white-space:nowrap;padding:8px 11px;letter-spacing:0.02em;}"
+    + "}"
+    + "@media (max-width:1080px) and (min-width:769px){"
+    +   ".hamburger{display:flex !important;}"
+    +   ".header-nav{display:none;position:absolute;top:68px;left:0;right:0;background:#5a0000;padding:16px 20px;z-index:300;}"
+    +   ".header-nav.open{display:block;}"
+    +   ".header-nav ul{flex-direction:column;gap:4px;}"
+    +   ".header-nav ul li a{white-space:nowrap;padding:12px 16px;font-size:15px;}"
+    + "}";
+  var style = document.createElement("style");
+  style.id = "kc-navfix";
+  style.textContent = css;
+  document.head.appendChild(style);
+}
+
 // ========== 実行 ==========
 document.addEventListener("DOMContentLoaded", function() {
+  injectNavFix();
   revealFadeUp();
   ensureFaqInNav();
   injectHeader();
