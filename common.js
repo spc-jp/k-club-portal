@@ -295,9 +295,36 @@ function revealFadeUp() {
   }
 }
 
+// ========== メニューに「よくある質問」を自動追加（全ページ共通）==========
+// 各ページのメニューに faq へのリンクが無ければ、アクセスの手前に自動で足します。
+function ensureFaqInNav() {
+  var navUl = document.querySelector(".header-nav ul");
+  if (!navUl) { return; }
+  var lis = navUl.getElementsByTagName("li");
+  var accessLi = null, contactLi = null;
+  for (var i = 0; i < lis.length; i++) {
+    var a = lis[i].getElementsByTagName("a")[0];
+    if (!a) { continue; }
+    var h = a.getAttribute("href") || "";
+    if (h.indexOf("faq.html") !== -1) { return; } // 既にあるので何もしない
+    if (h.indexOf("access.html") !== -1) { accessLi = lis[i]; }
+    if (h.indexOf("contact.html") !== -1) { contactLi = lis[i]; }
+  }
+  var isSub = window.location.pathname.indexOf("/boys/") !== -1 || window.location.pathname.indexOf("/central/") !== -1;
+  var prefix = isSub ? "../" : "";
+  var li = document.createElement("li");
+  var link = document.createElement("a");
+  link.href = prefix + "faq.html";
+  link.textContent = "よくある質問";
+  li.appendChild(link);
+  var ref = accessLi || contactLi;
+  if (ref) { navUl.insertBefore(li, ref); } else { navUl.appendChild(li); }
+}
+
 // ========== 実行 ==========
 document.addEventListener("DOMContentLoaded", function() {
   revealFadeUp();
+  ensureFaqInNav();
   injectHeader();
   injectFloating();
   injectJsonLd();
