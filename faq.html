@@ -34,30 +34,31 @@
   /* ===== ヘッダー ===== */
   /* ※既に共通ヘッダーがある場合は、この<header>ごと差し替えてください */
   header.site-head{
-    background:var(--crimson);
+    background:linear-gradient(100deg,#6e0000 0%,#8f0000 55%,#7d0012 100%);
     color:#fff;
     position:sticky;top:0;z-index:100;
-    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    box-shadow:0 2px 12px rgba(0,0,0,0.25);
   }
   .head-inner{
-    max-width:1000px;margin:0 auto;padding:12px 18px;
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    max-width:1120px;margin:0 auto;padding:10px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
   }
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800;letter-spacing:0.04em;}
-  .brand .mark{
-    width:34px;height:34px;border-radius:50%;
-    background:var(--gold);color:var(--crimson);
-    display:flex;align-items:center;justify-content:center;
-    font-weight:900;font-size:17px;flex:none;
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;}
+  .brand img{
+    width:46px;height:46px;border-radius:50%;flex:none;
+    background:#fff;object-fit:cover;box-shadow:0 0 0 2px rgba(232,184,75,0.65);
   }
-  .brand small{display:block;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:0.08em;}
-  nav.gnav ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;}
+  .brand .name{font-weight:800;font-size:17px;letter-spacing:0.02em;line-height:1.25;}
+  .brand small{display:block;font-size:10.5px;font-weight:600;color:#f0d9a6;letter-spacing:0.03em;}
+  nav.gnav ul{list-style:none;display:flex;gap:3px;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;align-items:center;}
   nav.gnav a{
-    text-decoration:none;color:#fff;font-size:13px;font-weight:700;
-    padding:7px 11px;border-radius:20px;white-space:nowrap;transition:background .2s;
+    text-decoration:none;color:#fff;font-size:13.5px;font-weight:700;
+    padding:8px 12px;border-radius:20px;white-space:nowrap;transition:background .2s,color .2s;
   }
   nav.gnav a:hover{background:rgba(255,255,255,0.15);}
-  nav.gnav a.current{background:var(--gold);color:var(--crimson);}
+  nav.gnav a.current{color:var(--gold);}
+  nav.gnav a.contact{background:var(--gold);color:var(--crimson-dark);margin-left:4px;}
+  nav.gnav a.contact:hover{background:#f3ca6a;}
 
   /* ===== ヒーロー ===== */
   .hero{
@@ -166,22 +167,24 @@
 
 <body>
 
-<!-- ===== ヘッダー（共通ヘッダーがあれば差し替えOK） ===== -->
+<!-- ===== ヘッダー（実物のトップページに合わせた版） ===== -->
+<!-- ※ロゴ画像は favicon.png を使用。別のロゴファイルがあれば src を差し替えてください -->
 <header class="site-head">
   <div class="head-inner">
     <a class="brand" href="index.html">
-      <span class="mark">K</span>
-      <span>越谷K・クラブ<small>KOSHIGAYA K-CLUB</small></span>
+      <img src="favicon.png" alt="越谷K・クラブ ロゴ">
+      <span class="name">NPO法人 越谷K・クラブ<small>Koshigaya K-Club Baseball Organization</small></span>
     </a>
     <nav class="gnav">
       <ul>
-        <li><a href="index.html">トップ</a></li>
-        <li><a href="about.html">法人概要</a></li>
+        <li><a href="about.html">法人について</a></li>
+        <li><a href="boys/">越谷ボーイズ</a></li>
+        <li><a href="central/">越谷中央ボーイズ</a></li>
         <li><a href="news.html">お知らせ</a></li>
         <li><a href="join.html">入団案内</a></li>
         <li><a href="faq.html" class="current">よくある質問</a></li>
         <li><a href="access.html">アクセス</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="contact.html" class="contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -317,10 +320,10 @@
 <!-- ===== フッター ===== -->
 <footer class="site-foot">
   <div class="fnav">
-    <a href="index.html">トップ</a>
-    <a href="about.html">法人概要</a>
+    <a href="about.html">法人について</a>
     <a href="join.html">入団案内</a>
     <a href="faq.html">よくある質問</a>
+    <a href="access.html">アクセス</a>
     <a href="contact.html">お問い合わせ</a>
   </div>
   <div class="copy">© NPO法人 越谷K・クラブ</div>
