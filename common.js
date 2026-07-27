@@ -275,12 +275,42 @@ function injectAppleTouchIcon() {
   }
 }
 
+// ========== 本文フェード表示（全ページ共通・古い端末でも確実に表示）==========
+// 各ページ個別のスクリプトが動かない環境でも、この共通処理が本文を必ず表示します。
+function revealFadeUp() {
+  var els = document.getElementsByClassName("fade-up");
+  try {
+    if ("IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function(entries){
+        for (var i = 0; i < entries.length; i++){
+          if (entries[i].isIntersecting) { entries[i].target.classList.add("visible"); }
+        }
+      }, { threshold: 0.1 });
+      for (var j = 0; j < els.length; j++){ obs.observe(els[j]); }
+    } else {
+      for (var k = 0; k < els.length; k++){ els[k].classList.add("visible"); }
+    }
+  } catch (err) {
+    for (var m = 0; m < els.length; m++){ els[m].classList.add("visible"); }
+  }
+}
+
 // ========== 実行 ==========
 document.addEventListener("DOMContentLoaded", function() {
+  revealFadeUp();
   injectHeader();
   injectFloating();
   injectJsonLd();
   injectOgp();
   injectCanonical();
   injectAppleTouchIcon();
+});
+
+
+// ========== 最終保険：万一どの処理も動かなくても、本文を必ず表示する ==========
+window.addEventListener("load", function() {
+  setTimeout(function(){
+    var els = document.getElementsByClassName("fade-up");
+    for (var i = 0; i < els.length; i++){ els[i].classList.add("visible"); }
+  }, 1500);
 });
